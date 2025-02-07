@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.*?>
+<?import org.lebastudios.theroundtable.ui.*?>
+<HBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx"
+      spacing="10">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <ScrollPane fx:id="instanciateObjPane" visible="false" hbarPolicy="NEVER" minWidth="55" maxWidth="55">
+        <VBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets right="10" bottom="10" left="10"/>
+            </padding>
+
+            <IconButton onAction="#instantiateNewSquareTable" iconName="table.png"/>
+            <IconButton onAction="#instantiateNewRoundTable" iconName="round-table.png"/>
+            <IconButton onAction="#instantiateNewBarStool" iconName="bar-chair.png"/>
+            <IconButton onAction="#instantiateNewBarTable" iconName="bar-bar.png"/>
+            <IconButton onAction="#instantiateNewEstablishmentWall" iconName="establishment-wall.png"/>
+
+        </VBox>
+    </ScrollPane>
+
+    <VBox HBox.hgrow="ALWAYS" spacing="10">
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <IconButton fx:id="swapModeButton" onAction="#swapMode" iconName="edit.png"/>
+            <IconButton onAction="#saveRoom" iconName="save.png"/>
+            <IconButton onAction="#reloadRoom" iconName="reload.png"/>
+            <IconButton onAction="#newRoom" iconName="new-tab.png"/>
+            <IconButton onAction="#deleteRoom" iconName="delete.png"/>
+        </HBox>
+
+        <TabPane HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" fx:id="roomsTabPane" tabClosingPolicy="UNAVAILABLE"/>
+    </VBox>
+</HBox>

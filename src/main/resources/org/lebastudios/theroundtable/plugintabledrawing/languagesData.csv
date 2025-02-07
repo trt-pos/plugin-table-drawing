@@ -1,0 +1,11 @@
+textKey,en_EN,es_ES
+phrase.rotateleft,Rotate Left,Rotar Izquierda
+phrase.rotateright,Rotate Right,Rotar Derecha
+word.rename,Rename,Renombrar
+title.newtablereqtext,Table Name,Nombre de la mesa
+word.delete,Delete,Eliminar
+title.newroomreqtext,New Room Name,Nombre de la nueva habitación
+textblock.deleteroomconfdialog,Are you sure you want to delete the actual room?,¿Estas seguro de borrar esta habitación?
+phrase.squaretable,Square Table,Mesa Cuadrada
+phrase.roundtable,Round Table,Mesa Redonda
+phrase.barstool,Bar Stool,Taburete

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.lebastudios.theroundtable.ui.IconButton?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
+      xmlns="http://javafx.com/javafx/17.0.2-ea">
+    <VBox mouseTransparent="true" alignment="CENTER" spacing="5">
+        <IconButton fx:id="icon" iconSize="-1" wrapText="true" iconName="edit-map-establishment-wall.png"/>
+    </VBox>
+</Pane>

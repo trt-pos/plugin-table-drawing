@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<GridPane xmlns="http://javafx.com/javafx" fx:id="root"
+          xmlns:fx="http://javafx.com/fxml" hgap="10" vgap="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <columnConstraints>
+        <ColumnConstraints prefWidth="100"/>
+        <ColumnConstraints hgrow="ALWAYS" prefWidth="75"/>
+        <ColumnConstraints prefWidth="25"/>
+        <ColumnConstraints prefWidth="100"/>
+        <ColumnConstraints hgrow="ALWAYS" prefWidth="75"/>
+        <ColumnConstraints />
+    </columnConstraints>
+    
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    
+    <Label text="Room Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField fx:id="roomName" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="0"/>
+    
+    <Label text="Width:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="roomWidth" text="24" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+    <Label text="Height:" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+    <TextField fx:id="roomHeight" text="24" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+    <Label text="m" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+    
+    <Button defaultButton="true" maxWidth="Infinity" text="%word.accept" onAction="#accept" alignment="CENTER_RIGHT" 
+            GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
+</GridPane>

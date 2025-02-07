@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.lebastudios.theroundtable.ui.IconButton?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
+      xmlns="http://javafx.com/javafx/17.0.2-ea">
+    <VBox mouseTransparent="true" alignment="CENTER" spacing="5">
+        <IconButton fx:id="icon" iconSize="-1" iconName="edit-map-bar-stool.png"/>
+        <Label textAlignment="CENTER" alignment="CENTER" wrapText="true" fx:id="tableNameLabel" layoutY="24.0" text="Name"/>
+    </VBox>
+</Pane>
