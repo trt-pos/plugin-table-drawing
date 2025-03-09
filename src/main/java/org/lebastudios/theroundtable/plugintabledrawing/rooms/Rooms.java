@@ -30,10 +30,10 @@ public class Rooms
         return new Gson().fromJson(new FileReader(roomFile), RoomData.class);
     }
 
-    public static void deleteRoom(RoomData roomData)
+    public static boolean deleteRoom(RoomData roomData)
     {
         var roomFile = roomData.getFile();
 
-        if (roomFile.exists()) roomFile.delete();
+        if (roomFile.exists()) return roomFile.delete();
     }
 }

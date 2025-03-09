@@ -160,9 +160,8 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
                     if (!result) return;
 
                     var roomName = activeRoom.getRoomData();
-                    
-                    unloadRoom(roomName);
-                    Rooms.deleteRoom(roomName);
+
+                    if (Rooms.deleteRoom(roomName)) unloadRoom(roomName);
                 }
         ).instantiate();
     }
