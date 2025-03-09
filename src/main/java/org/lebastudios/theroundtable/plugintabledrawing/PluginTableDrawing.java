@@ -40,14 +40,10 @@ public class PluginTableDrawing implements IPlugin
     {
         var newButton = new IconButton("table.png");
 
-        newButton.setOnAction(_ ->
-        {
-            MainStageController.getInstance().swapCentralPaneMainNode(
-                    RoomsPaneController.getInstance().getRoot()
-            );
+        newButton.setOnAction(_ -> MainStageController.getInstance().setCentralNode(
+                RoomsPaneController.getInstance()
 
-            PluginTableDrawingEvents.onPluginShow.invoke();
-        });
+        ));
 
         return newButton;
     }

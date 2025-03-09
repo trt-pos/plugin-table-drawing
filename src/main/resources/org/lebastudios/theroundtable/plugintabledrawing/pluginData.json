@@ -10,7 +10,7 @@
   "pluginDependencies": [
     {
       "pluginId": "plugin-cash-register",
-      "pluginVersion": "1.4.0"
+      "pluginVersion": "1.5.2"
     }
   ]
 }

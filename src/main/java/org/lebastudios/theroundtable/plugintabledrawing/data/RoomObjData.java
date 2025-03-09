@@ -24,6 +24,7 @@ public class RoomObjData
     public double x;
     public double y;
     public double rotation;
+    public OrderData orderData;
 
     public RoomObjData(String tableName, RoomObjectType roomObjectType, double x, double y, double rotation)
     {

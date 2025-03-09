@@ -1,5 +1,7 @@
 package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -9,37 +11,38 @@ import lombok.Getter;
 import org.controlsfx.control.decoration.GraphicDecoration;
 import org.lebastudios.theroundtable.apparience.ImageLoader;
 import org.lebastudios.theroundtable.dialogs.RequestTextDialogController;
-import org.lebastudios.theroundtable.events.IEventMethod;
 import org.lebastudios.theroundtable.events.PluginEvents;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
 import org.lebastudios.theroundtable.plugincashregister.cash.Order;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawingEvents;
+import org.lebastudios.theroundtable.plugincashregister.cash.OrderItem;
+import org.lebastudios.theroundtable.plugintabledrawing.data.OrderData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 import org.lebastudios.theroundtable.ui.IconView;
 
 public class TableObjectController extends RoomObjController
 {
-    private Order order;
+    private final Order order;
     @Getter @FXML private Label tableNameLabel;
     private ImageView orderDecorationIcon;
 
-    private final IEventMethod onPluginShowListener = () ->
+    public TableObjectController(RoomObjData roomObjectData, RoomController parentController)
     {
-        var image = order.getOrderItems().isEmpty()
-                ? null
-                : ImageLoader.getIcon("receipt.png");
+        super(roomObjectData, parentController);
 
-        orderDecorationIcon.setImage(image);
-    };
+        if (roomObjectData.orderData == null)
+        {
+            roomObjectData.orderData = new OrderData();
+        }
 
-    public TableObjectController(RoomObjData roomObjectType, RoomController parentController)
-    {
-        super(roomObjectType, parentController);
+        order = roomObjectData.orderData.intoOrder(roomObjectData);
 
-        order = new Order();
-        order.setOrderName(roomObjectType.tableName);
+        order.getOrderItems().addListener((ListChangeListener<OrderItem>) _ ->
+        {
+            RoomsPaneController.getInstance().activeRoom.saveRoom();
+            updateOrderDecoration();
+        });
     }
-
+    
     @Override
     @FXML
     protected void initialize()
@@ -49,13 +52,23 @@ public class TableObjectController extends RoomObjController
         orderDecorationIcon = new ImageView();
         new GraphicDecoration(orderDecorationIcon).applyDecoration(getRoot());
 
+        updateOrderDecoration();
+        
         orderDecorationIcon.setFitHeight(33);
         orderDecorationIcon.setFitWidth(33);
 
         tableNameLabel.setText(roomObjectData.tableName);
-        PluginTableDrawingEvents.onPluginShow.addWeakListener(onPluginShowListener);
     }
 
+    private void updateOrderDecoration()
+    {
+        var image = order.getOrderItems().isEmpty()
+                ? null
+                : ImageLoader.getIcon("receipt.png");
+
+        orderDecorationIcon.setImage(image);
+    }
+    
     @Override
     protected void onClick()
     {
@@ -121,6 +134,7 @@ public class TableObjectController extends RoomObjController
         RoomObjData roomObjData = super.getInstanceObjData();
 
         roomObjData.tableName = tableNameLabel.getText();
+        roomObjData.orderData = OrderData.fromOrder(order);
         return roomObjData;
     }
 }
