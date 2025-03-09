@@ -116,7 +116,9 @@ public class TableObjectController extends RoomObjController
     @Override
     public RoomObjData getInstanceObjData()
     {
-        return new RoomObjData(tableNameLabel.getText(), roomObjectData.roomObjectType, root.getLayoutX(),
-                root.getLayoutY(), icon.getRotate());
+        RoomObjData roomObjData = super.getInstanceObjData();
+        
+        roomObjData.tableName = tableNameLabel.getText();
+        return roomObjData;
     }
 }

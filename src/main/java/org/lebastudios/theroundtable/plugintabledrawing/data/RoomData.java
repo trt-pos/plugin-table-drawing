@@ -20,6 +20,14 @@ public class RoomData implements FileRepresentator
         this.roomName = roomName;
     }
 
+    public void updateRoomObjIds()
+    {
+        for (int i = 0; i < roomObjects.size(); i++)
+        {
+            roomObjects.get(i).id = i;
+        }
+    }
+    
     @Override
     public File getFile()
     {

@@ -28,6 +28,8 @@ public class RoomController extends PaneController<RoomController>
 
     public RoomController(RoomData roomData, TabPane parent)
     {
+        roomData.updateRoomObjIds();
+        
         this.roomData = roomData;
         this.parent = parent;
         
@@ -35,20 +37,10 @@ public class RoomController extends PaneController<RoomController>
         roomHeight = roomData.heightInTiles * TILE_SIZE;
     }
     
-    @Override
-    public Class<?> getBundleClass()
-    {
-        return PluginTableDrawing.class;
-    }
-
-    @Override
-    public URL getFXML()
-    {
-        return RoomController.class.getResource("roomController.fxml");
-    }
-
     public void instantiateObject(RoomObjData roomObjData)
     {
+        roomObjData.id = roomObjects.size();
+        System.out.println(roomObjData.id);
         var table = roomObjData.intoController(this);
         
         tablesPane.getChildren().add(table.getRoot());
@@ -100,14 +92,14 @@ public class RoomController extends PaneController<RoomController>
         
         adjustScale(parent.getWidth(), parent.getHeight());
     }
-    
+
     public void loadRoom()
     {
         roomData = Rooms.loadRoom(this.roomData.roomName);
         loadFromData(roomData);
         roomData.save();
     }
-    
+
     private void loadFromData(RoomData roomData)
     {
         tablesPane.getChildren().clear();
@@ -132,5 +124,17 @@ public class RoomController extends PaneController<RoomController>
         
         tablesPane.setTranslateX((parent.getWidth() - roomWidth) / 2);
         tablesPane.setTranslateY((parent.getHeight() - roomHeight) / 2);
+    }
+
+    @Override
+    public Class<?> getBundleClass()
+    {
+        return PluginTableDrawing.class;
+    }
+
+    @Override
+    public URL getFXML()
+    {
+        return RoomController.class.getResource("roomController.fxml");
     }
 }

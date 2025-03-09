@@ -161,7 +161,10 @@ public class RoomObjController extends PaneController<RoomObjController>
 
     public RoomObjData getInstanceObjData()
     {
-        return new RoomObjData("", roomObjectData.roomObjectType, root.getLayoutX(),
-                root.getLayoutY(), icon.getRotate());
+        roomObjectData.x = root.getLayoutX();
+        roomObjectData.y = root.getLayoutY();
+        roomObjectData.rotation = icon.getRotate();
+        
+        return roomObjectData;
     }
 }
