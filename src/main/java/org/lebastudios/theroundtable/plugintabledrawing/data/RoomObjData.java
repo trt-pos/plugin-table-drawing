@@ -20,6 +20,7 @@ public class RoomObjData
             new RoomObjData("Bar Table", RoomObjectType.BAR_TABLE, 0, 0, 0);
     public static final RoomObjData ESTABLISHMENT_WALL =
             new RoomObjData("Establishment Wall", RoomObjectType.ESTABLISHMENT_WALL, 0, 0, 0);
+    
     public String tableName;
     public RoomObjectType roomObjectType;
     public double x;

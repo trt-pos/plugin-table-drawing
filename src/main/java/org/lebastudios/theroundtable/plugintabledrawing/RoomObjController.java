@@ -146,8 +146,11 @@ public class RoomObjController extends PaneController<RoomObjController>
 
     public void setPosition(double x, double y)
     {
-        x = Math.min(Math.max(x, 0), roomController.getTablesPane().getWidth() - root.getLayoutBounds().getWidth());
-        y = Math.min(Math.max(y, 0), roomController.getTablesPane().getHeight() - root.getLayoutBounds().getHeight());
+        final double xOffset = -icon.getLayoutBounds().getWidth();
+        final double yOffset = -icon.getLayoutBounds().getHeight() / 2f;
+        
+        x = Math.min(Math.max(x, xOffset), roomController.getTablesPane().getWidth() + xOffset);
+        y = Math.min(Math.max(y, yOffset), roomController.getTablesPane().getHeight() + yOffset);
         
         x = Math.round(x / RoomController.TILE_SIZE) * RoomController.TILE_SIZE;
         y = Math.round(y / RoomController.TILE_SIZE) * RoomController.TILE_SIZE;

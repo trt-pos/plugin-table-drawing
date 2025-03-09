@@ -6,7 +6,7 @@
 
     <groupId>org.lebastudios.theroundtable</groupId>
     <artifactId>plugin-table-drawing</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <name>plugin-table-drawing</name>
     <packaging>jar</packaging>
 
@@ -35,6 +35,7 @@
             <groupId>org.lebastudios.theroundtable</groupId>
             <artifactId>plugin-cash-register</artifactId>
             <version>1.4.0</version>
+            <scope>provided</scope>
         </dependency>
         
     </dependencies>
