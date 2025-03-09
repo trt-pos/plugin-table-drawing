@@ -14,6 +14,11 @@ public class Rooms
         return new File(PluginTableDrawing.getInstance().getPluginFolder(), "rooms");
     }
     
+    public static boolean existsRoom(String roomName)
+    {
+        return new File(getRoomsFile(), roomName).exists();
+    }
+    
     @SneakyThrows
     public static RoomData loadRoom(String roomName)
     {

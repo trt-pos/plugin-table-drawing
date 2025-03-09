@@ -65,12 +65,20 @@ public class RoomCreationStageController extends StageController<RoomCreationSta
 
     private boolean validateData()
     {
+        roomName.setText(roomName.getText().trim());
+        
         if (roomName.getText().isBlank())
         {
             UIEffects.shakeNode(roomName);
             return false;
         }
 
+        if (Rooms.existsRoom(roomName.getText())) 
+        {
+            UIEffects.shakeNode(roomName);
+            return false;
+        }
+        
         try
         {
             if (Double.parseDouble(roomWidth.getText()) < 1)
