@@ -1,7 +1,6 @@
 package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -42,7 +41,7 @@ public class TableObjectController extends RoomObjController
             updateOrderDecoration();
         });
     }
-    
+
     @Override
     @FXML
     protected void initialize()
@@ -53,7 +52,7 @@ public class TableObjectController extends RoomObjController
         new GraphicDecoration(orderDecorationIcon).applyDecoration(getRoot());
 
         updateOrderDecoration();
-        
+
         orderDecorationIcon.setFitHeight(33);
         orderDecorationIcon.setFitWidth(33);
 
@@ -68,7 +67,7 @@ public class TableObjectController extends RoomObjController
 
         orderDecorationIcon.setImage(image);
     }
-    
+
     @Override
     protected void onClick()
     {
@@ -109,9 +108,20 @@ public class TableObjectController extends RoomObjController
         firstMenuItem.setGraphic(graphic);
         firstMenuItem.setOnAction(_ ->
         {
-            new RequestTextDialogController(tableNameLabel::setText,
-                    LangFileLoader.getTranslation("title.newtablereqtext"),
-                    "Rename", null).instantiate(true);
+            new RequestTextDialogController(text ->
+            {
+                String newText = text.trim();
+
+                if (newText.length() > 15)
+                {
+                    newText = newText.substring(0, 15);
+                }
+
+                newText = newText.trim();
+                
+                tableNameLabel.setText(newText);
+            }, LangFileLoader.getTranslation("title.newtablereqtext"), "Rename", null).instantiate(true);
+
             order.setOrderName(tableNameLabel.getText());
             RoomsPaneController.getInstance().activeRoom.saveRoom();
         });
