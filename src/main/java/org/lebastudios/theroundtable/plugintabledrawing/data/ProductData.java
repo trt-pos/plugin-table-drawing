@@ -6,11 +6,11 @@ import java.math.BigDecimal;
 
 public class ProductData
 {
-    // TODO: Need to save the IVA tax rate for each product
     public int productId;
     public String productName;
     public String productPrice;
     public String imgPath;
+    public String taxes;
     public boolean taxesIncluded;
     public boolean enabled;
     public String categoryName;
@@ -24,6 +24,7 @@ public class ProductData
         data.productName = product.getName();
         data.productPrice = product.getPrice().toString();
         data.imgPath = product.getImgPath();
+        data.taxes = product.getTaxes().toString();
         data.taxesIncluded = product.getTaxesIncluded();
         data.enabled = product.isEnabled();
         data.categoryName = product.getCategoryName();
@@ -40,6 +41,7 @@ public class ProductData
         product.setName(productName);
         product.setPrice(new BigDecimal(productPrice));
         product.setImgPath(imgPath);
+        product.setTaxes(new BigDecimal(taxes));
         product.setTaxesIncluded(taxesIncluded);
         product.setEnabled(enabled);
         product.setCategoryName(categoryName);
