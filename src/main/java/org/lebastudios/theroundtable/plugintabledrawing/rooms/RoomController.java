@@ -41,7 +41,6 @@ public class RoomController extends PaneController<RoomController>
     public void instantiateObject(RoomObjData roomObjData)
     {
         roomObjData.id = roomData.getAndIncrementNextObjId();
-        System.out.println(roomObjData.id);
         var table = roomObjData.intoController(this);
         
         tablesPane.getChildren().add(table.getRoot());
@@ -96,13 +95,6 @@ public class RoomController extends PaneController<RoomController>
         tablesPane.setMinSize(roomWidth, roomHeight);
         
         adjustScale(parent.getWidth(), parent.getHeight());
-    }
-
-    public void loadRoom()
-    {
-        roomData = Rooms.loadRoom(this.roomData.roomName);
-        loadFromData(roomData);
-        roomData.save();
     }
 
     private void loadFromData(RoomData roomData)

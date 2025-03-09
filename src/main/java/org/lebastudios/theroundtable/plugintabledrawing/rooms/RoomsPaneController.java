@@ -145,12 +145,6 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     }
 
     @FXML
-    private void saveRoom(ActionEvent actionEvent)
-    {
-        activeRoom.saveRoom();
-    }
-
-    @FXML
     private void deleteRoom(ActionEvent actionEvent)
     {
         new ConfirmationTextDialogController(
@@ -164,12 +158,6 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
                     if (Rooms.deleteRoom(roomName)) unloadRoom(roomName);
                 }
         ).instantiate();
-    }
-
-    @FXML
-    private void reloadRoom(ActionEvent actionEvent)
-    {
-        activeRoom.loadRoom();
     }
 
     @FXML

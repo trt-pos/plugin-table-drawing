@@ -31,8 +31,6 @@
     <VBox HBox.hgrow="ALWAYS" spacing="10">
         <HBox spacing="15" alignment="CENTER_LEFT">
             <IconButton fx:id="swapModeButton" onAction="#swapMode" iconName="edit.png"/>
-            <IconButton onAction="#saveRoom" iconName="save.png"/>
-            <IconButton onAction="#reloadRoom" iconName="reload.png"/>
             <IconButton onAction="#newRoom" iconName="new-tab.png"/>
             <IconButton onAction="#deleteRoom" iconName="delete.png"/>
         </HBox>

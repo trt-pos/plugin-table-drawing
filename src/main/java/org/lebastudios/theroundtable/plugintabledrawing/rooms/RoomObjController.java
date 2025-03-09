@@ -61,27 +61,6 @@ public class RoomObjController extends PaneController<RoomObjController>
         icon.setRotate(roomObjectData.rotation);
     }
 
-    @Override
-    public final Class<?> getBundleClass()
-    {
-        return PluginTableDrawing.class;
-    }
-
-    @Override
-    public final URL getFXML()
-    {
-        var fxmlObject = switch (this.roomObjectData.roomObjectType)
-        {
-            case SQUARE -> "squareTableObject.fxml";
-            case ROUND -> "roundTableObject.fxml";
-            case BAR_STOOL -> "barStoolObject.fxml";
-            case ESTABLISHMENT_WALL -> "establishmentWallObject.fxml";
-            case BAR_TABLE -> "barTableObject.fxml";
-        };
-        
-        return RoomObjController.class.getResource(fxmlObject);
-    }
-
     @FXML
     protected void onClick() {}
 
@@ -106,8 +85,8 @@ public class RoomObjController extends PaneController<RoomObjController>
     protected void onContextMenu() {}
 
     private final double[] offsetX = new double[1];
-    private final double[] offsetY = new double[1];
 
+    private final double[] offsetY = new double[1];
     private void addEventHandlers()
     {
         root.setOnMousePressed(event ->
@@ -144,6 +123,13 @@ public class RoomObjController extends PaneController<RoomObjController>
             setPosition(event.getSceneX() / roomController.getTablesPane().getScaleX() + offsetX[0],
                     event.getSceneY() / roomController.getTablesPane().getScaleY() + offsetY[0]);
         });
+        
+        root.setOnMouseReleased(_ ->
+        {
+            if (!editMode) return;
+
+            RoomsPaneController.getInstance().activeRoom.saveRoom();
+        });
     }
 
     public void setPosition(double x, double y)
@@ -168,5 +154,26 @@ public class RoomObjController extends PaneController<RoomObjController>
         roomObjectData.rotation = icon.getRotate();
         
         return roomObjectData;
+    }
+
+    @Override
+    public final Class<?> getBundleClass()
+    {
+        return PluginTableDrawing.class;
+    }
+
+    @Override
+    public final URL getFXML()
+    {
+        var fxmlObject = switch (this.roomObjectData.roomObjectType)
+        {
+            case SQUARE -> "squareTableObject.fxml";
+            case ROUND -> "roundTableObject.fxml";
+            case BAR_STOOL -> "barStoolObject.fxml";
+            case ESTABLISHMENT_WALL -> "establishmentWallObject.fxml";
+            case BAR_TABLE -> "barTableObject.fxml";
+        };
+
+        return RoomObjController.class.getResource(fxmlObject);
     }
 }
