@@ -47,6 +47,8 @@ public class RoomController extends PaneController<RoomController>
         tablesPane.getChildren().add(table.getRoot());
         table.getController().setPosition(0, 0);
         roomObjects.add(table.getController());
+        
+        saveRoom();
     }
 
     public void saveRoom()
@@ -67,6 +69,8 @@ public class RoomController extends PaneController<RoomController>
     {
         roomObjects.remove(roomObjController);
         tablesPane.getChildren().remove(roomObjController.getRoot());
+        
+        saveRoom();
     }
 
     @FXML @Override protected void initialize()

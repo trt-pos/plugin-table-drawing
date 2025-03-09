@@ -35,5 +35,7 @@ public class Rooms
         var roomFile = roomData.getFile();
 
         if (roomFile.exists()) return roomFile.delete();
+        
+        return false;
     }
 }

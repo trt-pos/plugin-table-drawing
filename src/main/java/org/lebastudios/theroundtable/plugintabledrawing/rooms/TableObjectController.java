@@ -31,7 +31,7 @@ public class TableObjectController extends RoomObjController
 
         orderDecorationIcon.setImage(image);
     };
-    
+
     public TableObjectController(RoomObjData roomObjectType, RoomController parentController)
     {
         super(roomObjectType, parentController);
@@ -48,10 +48,10 @@ public class TableObjectController extends RoomObjController
 
         orderDecorationIcon = new ImageView();
         new GraphicDecoration(orderDecorationIcon).applyDecoration(getRoot());
-        
+
         orderDecorationIcon.setFitHeight(33);
         orderDecorationIcon.setFitWidth(33);
-        
+
         tableNameLabel.setText(roomObjectData.tableName);
         PluginTableDrawingEvents.onPluginShow.addWeakListener(onPluginShowListener);
     }
@@ -79,14 +79,22 @@ public class TableObjectController extends RoomObjController
         var graphic = new IconView("rotate-left.png");
         graphic.setIconSize(24);
         menuItem_0.setGraphic(graphic);
-        menuItem_0.setOnAction(_ -> icon.setRotate(icon.getRotate() - 90));
+        menuItem_0.setOnAction(_ ->
+        {
+            icon.setRotate(icon.getRotate() - 90);
+            RoomsPaneController.getInstance().activeRoom.saveRoom();
+        });
 
         // Rotate Right Button
         var menuItem_1 = new MenuItem(LangFileLoader.getTranslation("phrase.rotateright"));
         graphic = new IconView("rotate-right.png");
         graphic.setIconSize(24);
         menuItem_1.setGraphic(graphic);
-        menuItem_1.setOnAction(_ -> icon.setRotate(icon.getRotate() + 90));
+        menuItem_1.setOnAction(_ ->
+        {
+            icon.setRotate(icon.getRotate() + 90);
+            RoomsPaneController.getInstance().activeRoom.saveRoom();
+        });
 
         // Rename Button
         var firstMenuItem = new MenuItem(LangFileLoader.getTranslation("word.rename"));
@@ -94,13 +102,13 @@ public class TableObjectController extends RoomObjController
         graphic.setIconSize(24);
         firstMenuItem.setGraphic(graphic);
         firstMenuItem.setOnAction(_ ->
-                {
-                    new RequestTextDialogController(tableNameLabel::setText,
-                            LangFileLoader.getTranslation("title.newtablereqtext"),
-                            "Rename", null).instantiate();
-                    order.setOrderName(tableNameLabel.getText());
-                }
-        );
+        {
+            new RequestTextDialogController(tableNameLabel::setText,
+                    LangFileLoader.getTranslation("title.newtablereqtext"),
+                    "Rename", null).instantiate(true);
+            order.setOrderName(tableNameLabel.getText());
+            RoomsPaneController.getInstance().activeRoom.saveRoom();
+        });
 
         // Delete Button
         var secondMenuItem = new MenuItem(LangFileLoader.getTranslation("word.delete"));
@@ -118,7 +126,7 @@ public class TableObjectController extends RoomObjController
     public RoomObjData getInstanceObjData()
     {
         RoomObjData roomObjData = super.getInstanceObjData();
-        
+
         roomObjData.tableName = tableNameLabel.getText();
         return roomObjData;
     }
