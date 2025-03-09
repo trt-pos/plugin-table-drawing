@@ -59,14 +59,7 @@ public class TableObjectController extends RoomObjController
     @Override
     protected void onClick()
     {
-        try
-        {
-            PluginEvents.invokePluginEvent("plugin-cash-register:showOrder", order);
-        }
-        catch (Exception exception)
-        {
-            System.err.println("Unable to invoke plugin event: " + exception);
-        }
+        PluginEvents.invokePluginEvent("plugin-cash-register:showOrder", order);
     }
 
     @Override

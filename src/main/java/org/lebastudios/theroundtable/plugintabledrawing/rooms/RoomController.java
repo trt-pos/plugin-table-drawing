@@ -40,7 +40,7 @@ public class RoomController extends PaneController<RoomController>
     
     public void instantiateObject(RoomObjData roomObjData)
     {
-        roomObjData.id = roomObjects.size();
+        roomObjData.id = roomData.getAndIncrementNextObjId();
         System.out.println(roomObjData.id);
         var table = roomObjData.intoController(this);
         

@@ -13,6 +13,7 @@ public class RoomData implements FileRepresentator
     public String roomName;
     public double widthInTiles = 36;
     public double heightInTiles = 21;
+    public int nextObjId = 1;
     public List<RoomObjData> roomObjects = new ArrayList<>();
 
     public RoomData(String roomName)
@@ -22,10 +23,18 @@ public class RoomData implements FileRepresentator
 
     public void updateRoomObjIds()
     {
-        for (int i = 0; i < roomObjects.size(); i++)
+        for (RoomObjData roomObject : roomObjects)
         {
-            roomObjects.get(i).id = i;
+            if (roomObject.id == -1)
+            {
+                roomObject.id = this.getAndIncrementNextObjId();
+            }
         }
+    }
+    
+    public synchronized int getAndIncrementNextObjId()
+    {
+        return nextObjId++;
     }
     
     @Override

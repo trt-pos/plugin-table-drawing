@@ -27,7 +27,21 @@ public class Rooms
 
         if (!roomFile.exists()) return new RoomData(roomName);
 
-        return new Gson().fromJson(new FileReader(roomFile), RoomData.class);
+        RoomData roomData = new Gson().fromJson(new FileReader(roomFile), RoomData.class);
+        
+        // When loading a room from an older version of the plugin we must update the room object id if necessary
+        if (roomData.nextObjId == 0) 
+        {
+            for (var roomObj : roomData.roomObjects)
+            {
+                if (roomObj.id >= roomData.nextObjId) 
+                {
+                    roomData.nextObjId = roomObj.id + 1;
+                }
+            }
+        }
+        
+        return roomData;
     }
 
     public static boolean deleteRoom(RoomData roomData)

@@ -18,7 +18,7 @@ public class RoomObjData
     public static final RoomObjData ESTABLISHMENT_WALL =
             new RoomObjData("Establishment Wall", RoomObjectType.ESTABLISHMENT_WALL, 0, 0, 0);
     
-    public int id;
+    public int id = -1;
     public String tableName;
     public RoomObjectType roomObjectType;
     public double x;
