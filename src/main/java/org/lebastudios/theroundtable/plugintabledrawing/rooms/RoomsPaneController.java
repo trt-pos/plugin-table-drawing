@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing;
+package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,8 +8,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.dialogs.ConfirmationTextDialogController;
-import org.lebastudios.theroundtable.dialogs.RequestTextDialogController;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
+import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 import org.lebastudios.theroundtable.ui.IconButton;

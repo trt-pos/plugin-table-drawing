@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing;
+package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -6,7 +6,9 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
+import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
+import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjectType;
 import org.lebastudios.theroundtable.ui.IconButton;
 import org.lebastudios.theroundtable.ui.IconView;
 

@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing;
+package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TabPane;
@@ -7,6 +7,7 @@ import javafx.scene.layout.*;
 import lombok.Getter;
 import org.lebastudios.theroundtable.apparience.ImageLoader;
 import org.lebastudios.theroundtable.controllers.PaneController;
+import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 

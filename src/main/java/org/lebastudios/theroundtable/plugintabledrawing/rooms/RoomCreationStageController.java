@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing;
+package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -6,6 +6,7 @@ import javafx.stage.Modality;
 import lombok.NonNull;
 import org.lebastudios.theroundtable.apparience.UIEffects;
 import org.lebastudios.theroundtable.controllers.StageController;
+import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.ui.StageBuilder;
 

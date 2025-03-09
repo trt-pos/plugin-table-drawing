@@ -1,7 +1,7 @@
 package org.lebastudios.theroundtable.plugintabledrawing.data;
 
 import org.lebastudios.theroundtable.config.data.FileRepresentator;
-import org.lebastudios.theroundtable.plugintabledrawing.Rooms;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.Rooms;
 
 import java.io.File;
 import java.util.ArrayList;

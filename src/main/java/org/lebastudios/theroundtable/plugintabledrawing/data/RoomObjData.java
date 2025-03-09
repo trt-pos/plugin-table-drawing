@@ -1,10 +1,9 @@
 package org.lebastudios.theroundtable.plugintabledrawing.data;
 
 import org.lebastudios.theroundtable.locale.LangFileLoader;
-import org.lebastudios.theroundtable.plugintabledrawing.RoomController;
-import org.lebastudios.theroundtable.plugintabledrawing.RoomObjController;
-import org.lebastudios.theroundtable.plugintabledrawing.RoomObjectType;
-import org.lebastudios.theroundtable.plugintabledrawing.TableObjectController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomObjController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.TableObjectController;
 
 public class RoomObjData
 {
