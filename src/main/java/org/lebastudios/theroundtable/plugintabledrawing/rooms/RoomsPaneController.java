@@ -9,6 +9,7 @@ import javafx.scene.control.TabPane;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.dialogs.ConfirmationTextDialogController;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
+import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
@@ -28,15 +29,25 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     @FXML private TabPane roomsTabPane;
     @FXML private IconButton swapModeButton;
     @FXML private ScrollPane instanciateObjPane;
-    
+
     public static RoomsPaneController getInstance()
     {
         if (instance == null) instance = new RoomsPaneController();
         return instance;
     }
-    
-    private RoomsPaneController() {}
-    
+
+    private RoomsPaneController()
+    {
+        CashRegister.onOrderItemModified.addListener(_ ->
+        {
+            CashRegister cashRegister = CashRegister.getInstance();
+            
+            if (cashRegister.getActualOrder() == cashRegister.getCashRegisterOrder()) return;
+            
+            activeRoom.saveRoom();
+        });
+    }
+
     @Override
     public URL getFXML()
     {
@@ -49,10 +60,12 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
         return PluginTableDrawing.class;
     }
 
-    @FXML @Override protected void initialize()
+    @FXML
+    @Override
+    protected void initialize()
     {
         loadRooms();
-        
+
         roomsTabPane.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) ->
         {
             if (newValue == null) return;
@@ -103,7 +116,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
         newTab.setContent(newRoomController.getRoot());
         roomControllers.add(newRoomController);
         roomsTabPane.getTabs().add(newTab);
-        
+
         roomsTabPane.getSelectionModel().select(newTab);
         roomData.save();
     }
