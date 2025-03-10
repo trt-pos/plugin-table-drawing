@@ -35,7 +35,7 @@ public class TableObjectController extends RoomObjController
 
         order = roomObjectData.orderData.intoOrder(roomObjectData);
 
-        order.getOrderItems().addListener((ListChangeListener<OrderItem>) _ ->
+        order.getObservableOrderItems().addListener((ListChangeListener<OrderItem>) _ ->
         {
             RoomsPaneController.getInstance().activeRoom.saveRoom();
             updateOrderDecoration();

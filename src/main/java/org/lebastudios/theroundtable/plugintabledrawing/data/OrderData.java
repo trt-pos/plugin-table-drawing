@@ -1,6 +1,5 @@
 package org.lebastudios.theroundtable.plugintabledrawing.data;
 
-import com.sun.javafx.collections.ObservableListWrapper;
 import org.lebastudios.theroundtable.plugincashregister.cash.Order;
 import org.lebastudios.theroundtable.plugincashregister.cash.OrderItem;
 
@@ -35,7 +34,7 @@ public class OrderData
             orderItems.add(orderItemData.intoOrderItem());
         }
         
-        order.setOrderItems(new ObservableListWrapper<>(orderItems));
+        order.getObservableOrderItems().addAll(orderItems);
         return order;
     }
 }
