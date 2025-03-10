@@ -25,7 +25,7 @@ public class RoomData implements FileRepresentator
     {
         for (RoomObjData roomObject : roomObjects)
         {
-            if (roomObject.id == -1)
+            if (roomObject.id == 0)
             {
                 roomObject.id = this.getAndIncrementNextObjId();
             }
