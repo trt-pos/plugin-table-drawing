@@ -1,25 +1,24 @@
 package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import lombok.NonNull;
 import org.lebastudios.theroundtable.apparience.UIEffects;
 import org.lebastudios.theroundtable.controllers.StageController;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.ui.StageBuilder;
 
-import java.net.URL;
 import java.util.function.Consumer;
 
 public class RoomCreationStageController extends StageController<RoomCreationStageController>
 {
     private final Consumer<RoomData> roomDataConsumer;
 
-    @FXML private TextField roomName;
-    @FXML private TextField roomHeight;
-    @FXML private TextField roomWidth;
+    @FXML public TextField roomName;
+    @FXML public TextField roomHeight;
+    @FXML public TextField roomWidth;
 
     public RoomCreationStageController(@NonNull Consumer<RoomData> roomDataConsumer)
     {
@@ -35,23 +34,11 @@ public class RoomCreationStageController extends StageController<RoomCreationSta
     @Override
     protected void customizeStageBuilder(StageBuilder stageBuilder)
     {
-        stageBuilder.setModality(Modality.APPLICATION_MODAL);
-    }
-
-    @Override
-    public Class<?> getBundleClass()
-    {
-        return PluginTableDrawing.class;
-    }
-
-    @Override
-    public URL getFXML()
-    {
-        return RoomCreationStageController.class.getResource("roomCreationStage.fxml");
+        stageBuilder.setModality(Modality.WINDOW_MODAL);
     }
 
     @FXML
-    private void accept()
+    public void accept(ActionEvent actionEvent)
     {
         if (!validateData()) return;
 

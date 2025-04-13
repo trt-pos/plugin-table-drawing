@@ -7,15 +7,14 @@ import javafx.scene.layout.*;
 import lombok.Getter;
 import org.lebastudios.theroundtable.apparience.ImageLoader;
 import org.lebastudios.theroundtable.controllers.PaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomController extends PaneController<RoomController>
+public class RoomPaneController extends PaneController<RoomPaneController>
 {
     public static final double TILE_SIZE = 24;
     
@@ -23,11 +22,12 @@ public class RoomController extends PaneController<RoomController>
     private final double roomHeight;
     
     private final List<RoomObjController> roomObjects = new ArrayList<>();
-    @Getter @FXML private Pane tablesPane;
-    @Getter private RoomData roomData;
+    @Getter private final RoomData roomData;
     private final TabPane parent;
+    
+    @Getter private Pane tablesPane;
 
-    public RoomController(RoomData roomData, TabPane parent)
+    public RoomPaneController(RoomData roomData, TabPane parent)
     {
         roomData.updateRoomObjIds();
         
@@ -36,6 +36,33 @@ public class RoomController extends PaneController<RoomController>
         
         roomWidth = roomData.widthInTiles * TILE_SIZE;
         roomHeight = roomData.heightInTiles * TILE_SIZE;
+    }
+
+    @FXML @Override protected void initialize()
+    {
+        tablesPane = (Pane) getRoot(); 
+        
+        loadFromData(roomData);
+
+        Image image = ImageLoader.getTexture("establishment-floor-tile.png");
+        BackgroundImage backgroundImage = new BackgroundImage(
+                image,
+                BackgroundRepeat.REPEAT, // Repetir en X
+                BackgroundRepeat.REPEAT, // Repetir en Y
+                BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT
+        );
+        Background background = new Background(backgroundImage);
+        tablesPane.setBackground(background);
+
+        parent.widthProperty().addListener((_, _, newVal) -> adjustScale(newVal.doubleValue(), parent.getHeight()));
+        parent.heightProperty().addListener((_, _, newVal) -> adjustScale(parent.getWidth(), newVal.doubleValue()));
+
+        tablesPane.setPrefSize(roomWidth, roomHeight);
+        tablesPane.setMaxSize(roomWidth, roomHeight);
+        tablesPane.setMinSize(roomWidth, roomHeight);
+
+        adjustScale(parent.getWidth(), parent.getHeight());
     }
     
     public void instantiateObject(RoomObjData roomObjData)
@@ -72,31 +99,6 @@ public class RoomController extends PaneController<RoomController>
         saveRoom();
     }
 
-    @FXML @Override protected void initialize()
-    {
-        loadFromData(roomData);
-        
-        Image image = ImageLoader.getTexture("establishment-floor-tile.png");
-        BackgroundImage backgroundImage = new BackgroundImage(
-                image,
-                BackgroundRepeat.REPEAT, // Repetir en X
-                BackgroundRepeat.REPEAT, // Repetir en Y
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT
-        );
-        Background background = new Background(backgroundImage);
-        tablesPane.setBackground(background);
-        
-        parent.widthProperty().addListener((_, _, newVal) -> adjustScale(newVal.doubleValue(), parent.getHeight()));
-        parent.heightProperty().addListener((_, _, newVal) -> adjustScale(parent.getWidth(), newVal.doubleValue()));
-        
-        tablesPane.setPrefSize(roomWidth, roomHeight);
-        tablesPane.setMaxSize(roomWidth, roomHeight);
-        tablesPane.setMinSize(roomWidth, roomHeight);
-        
-        adjustScale(parent.getWidth(), parent.getHeight());
-    }
-
     private void loadFromData(RoomData roomData)
     {
         tablesPane.getChildren().clear();
@@ -121,17 +123,5 @@ public class RoomController extends PaneController<RoomController>
         
         tablesPane.setTranslateX((parent.getWidth() - roomWidth) / 2);
         tablesPane.setTranslateY((parent.getHeight() - roomHeight) / 2);
-    }
-
-    @Override
-    public Class<?> getBundleClass()
-    {
-        return PluginTableDrawing.class;
-    }
-
-    @Override
-    public URL getFXML()
-    {
-        return RoomController.class.getResource("roomController.fxml");
     }
 }

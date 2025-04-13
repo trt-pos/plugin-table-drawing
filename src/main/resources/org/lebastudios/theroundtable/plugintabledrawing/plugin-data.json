@@ -1,16 +1,18 @@
 {
   "pluginName": "Table Drawing",
   "pluginId": "plugin-table-drawing",
-  "pluginIcon": "table",
   "pluginDescription": "Draw and manage the tables is your establishment",
-  "pluginVersion": "1.3.1",
+  "pluginVersion": "3.0.0",
   "pluginVendor": "Leba Studios - Software Solutions",
   "pluginVendorUrl": "https://lebastudios.org",
-  "pluginRequiredCoreVersion": "2.5.0",
   "pluginDependencies": [
     {
+      "pluginId": "desktop-app",
+      "pluginVersion": "3.0.0"
+    },
+    {
       "pluginId": "plugin-cash-register",
-      "pluginVersion": "1.6.0"
+      "pluginVersion": "3.0.0"
     }
   ]
 }

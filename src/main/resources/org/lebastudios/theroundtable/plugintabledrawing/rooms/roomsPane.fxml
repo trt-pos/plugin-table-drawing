@@ -7,6 +7,7 @@
 <?import org.lebastudios.theroundtable.ui.*?>
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
+      fx:controller="org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController"
       spacing="10">
 
     <padding>
@@ -14,18 +15,20 @@
     </padding>
 
     <ScrollPane fx:id="instanciateObjPane" visible="false" hbarPolicy="NEVER" minWidth="55" maxWidth="55">
-        <VBox spacing="10" alignment="CENTER">
-            <padding>
-                <Insets right="10" bottom="10" left="10"/>
-            </padding>
+        <content>
+            <VBox spacing="10" alignment="CENTER">
+                <padding>
+                    <Insets right="10" bottom="10" left="10"/>
+                </padding>
 
-            <IconButton onAction="#instantiateNewSquareTable" iconName="table.png"/>
-            <IconButton onAction="#instantiateNewRoundTable" iconName="round-table.png"/>
-            <IconButton onAction="#instantiateNewBarStool" iconName="bar-chair.png"/>
-            <IconButton onAction="#instantiateNewBarTable" iconName="bar-bar.png"/>
-            <IconButton onAction="#instantiateNewEstablishmentWall" iconName="establishment-wall.png"/>
+                <IconButton onAction="#instantiateNewSquareTable" iconName="table.png"/>
+                <IconButton onAction="#instantiateNewRoundTable" iconName="round-table.png"/>
+                <IconButton onAction="#instantiateNewBarStool" iconName="bar-chair.png"/>
+                <IconButton onAction="#instantiateNewBarTable" iconName="bar-bar.png"/>
+                <IconButton onAction="#instantiateNewEstablishmentWall" iconName="establishment-wall.png"/>
 
-        </VBox>
+            </VBox>
+        </content>
     </ScrollPane>
 
     <VBox HBox.hgrow="ALWAYS" spacing="10">

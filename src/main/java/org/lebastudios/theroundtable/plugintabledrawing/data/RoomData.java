@@ -1,6 +1,6 @@
 package org.lebastudios.theroundtable.plugintabledrawing.data;
 
-import org.lebastudios.theroundtable.config.data.FileRepresentator;
+import org.lebastudios.theroundtable.files.JsonFile;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.Rooms;
 
 import java.io.File;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RoomData implements FileRepresentator
+public class RoomData extends JsonFile<RoomData>
 {
     public String roomName;
     public double widthInTiles = 36;

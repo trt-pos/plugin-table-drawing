@@ -1,9 +1,9 @@
 package org.lebastudios.theroundtable.plugintabledrawing.data;
 
 import org.lebastudios.theroundtable.locale.LangFileLoader;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomObjController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.TableObjectController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.TableObjectController;
 
 public class RoomObjData
 {
@@ -35,7 +35,7 @@ public class RoomObjData
         this.rotation = rotation;
     }
 
-    public RoomObjController intoController(RoomController parentController)
+    public RoomObjController intoController(RoomPaneController parentController)
     {
         return switch (this.roomObjectType)
         {

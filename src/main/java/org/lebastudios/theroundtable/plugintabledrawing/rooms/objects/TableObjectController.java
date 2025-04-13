@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing.rooms;
+package org.lebastudios.theroundtable.plugintabledrawing.rooms.objects;
 
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -16,15 +16,17 @@ import org.lebastudios.theroundtable.plugincashregister.cash.Order;
 import org.lebastudios.theroundtable.plugincashregister.cash.OrderItem;
 import org.lebastudios.theroundtable.plugintabledrawing.data.OrderData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
 import org.lebastudios.theroundtable.ui.IconView;
 
 public class TableObjectController extends RoomObjController
 {
     private final Order order;
-    @Getter @FXML private Label tableNameLabel;
+    @Getter @FXML public Label tableNameLabel;
     private ImageView orderDecorationIcon;
 
-    public TableObjectController(RoomObjData roomObjectData, RoomController parentController)
+    public TableObjectController(RoomObjData roomObjectData, RoomPaneController parentController)
     {
         super(roomObjectData, parentController);
 

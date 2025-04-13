@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing.rooms;
+package org.lebastudios.theroundtable.plugintabledrawing.rooms.objects;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -6,9 +6,10 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjectType;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
 import org.lebastudios.theroundtable.ui.IconButton;
 import org.lebastudios.theroundtable.ui.IconView;
 
@@ -18,11 +19,11 @@ public class RoomObjController extends PaneController<RoomObjController>
 {
     public static boolean editMode = false;
     protected final RoomObjData roomObjectData;
-    protected final RoomController roomController;
-    @FXML protected Node root;
-    @FXML protected IconButton icon;
+    protected final RoomPaneController roomPaneController;
+    @FXML public Node root;
+    @FXML public IconButton icon;
 
-    public RoomObjController(RoomObjData roomObjData, RoomController roomController)
+    public RoomObjController(RoomObjData roomObjData, RoomPaneController roomPaneController)
     {
         if (this.getClass().equals(RoomObjController.class)) 
         {
@@ -42,7 +43,7 @@ public class RoomObjController extends PaneController<RoomObjController>
         }
         
         this.roomObjectData = roomObjData;
-        this.roomController = roomController;
+        this.roomPaneController = roomPaneController;
     }
 
     @FXML @Override protected void initialize()
@@ -54,8 +55,8 @@ public class RoomObjController extends PaneController<RoomObjController>
 
         icon.setIconSize((int) switch (roomObjectData.roomObjectType)
         {
-            case SQUARE, ROUND -> RoomController.TILE_SIZE * 2;
-            case BAR_STOOL, ESTABLISHMENT_WALL, BAR_TABLE -> RoomController.TILE_SIZE;
+            case SQUARE, ROUND -> RoomPaneController.TILE_SIZE * 2;
+            case BAR_STOOL, ESTABLISHMENT_WALL, BAR_TABLE -> RoomPaneController.TILE_SIZE;
         });
         
         icon.setRotate(roomObjectData.rotation);
@@ -93,8 +94,8 @@ public class RoomObjController extends PaneController<RoomObjController>
         {
             if (editMode)
             {
-                offsetX[0] = root.getLayoutX() - event.getSceneX() / roomController.getTablesPane().getScaleX();
-                offsetY[0] = root.getLayoutY() - event.getSceneY() / roomController.getTablesPane().getScaleY();
+                offsetX[0] = root.getLayoutX() - event.getSceneX() / roomPaneController.getTablesPane().getScaleX();
+                offsetY[0] = root.getLayoutY() - event.getSceneY() / roomPaneController.getTablesPane().getScaleY();
                 
                 root.toFront();
             }
@@ -120,8 +121,8 @@ public class RoomObjController extends PaneController<RoomObjController>
         {
             if (!editMode) return;
 
-            setPosition(event.getSceneX() / roomController.getTablesPane().getScaleX() + offsetX[0],
-                    event.getSceneY() / roomController.getTablesPane().getScaleY() + offsetY[0]);
+            setPosition(event.getSceneX() / roomPaneController.getTablesPane().getScaleX() + offsetX[0],
+                    event.getSceneY() / roomPaneController.getTablesPane().getScaleY() + offsetY[0]);
         });
         
         root.setOnMouseReleased(_ ->
@@ -137,11 +138,11 @@ public class RoomObjController extends PaneController<RoomObjController>
         final double xOffset = -getRoot().getLayoutBounds().getWidth() / 2f;
         final double yOffset = -icon.getLayoutBounds().getHeight() / 2f;
         
-        x = Math.min(Math.max(x, xOffset), roomController.getTablesPane().getWidth() + xOffset);
-        y = Math.min(Math.max(y, yOffset), roomController.getTablesPane().getHeight() + yOffset);
+        x = Math.min(Math.max(x, xOffset), roomPaneController.getTablesPane().getWidth() + xOffset);
+        y = Math.min(Math.max(y, yOffset), roomPaneController.getTablesPane().getHeight() + yOffset);
         
-        x = Math.round(x / RoomController.TILE_SIZE) * RoomController.TILE_SIZE;
-        y = Math.round(y / RoomController.TILE_SIZE) * RoomController.TILE_SIZE;
+        x = Math.round(x / RoomPaneController.TILE_SIZE) * RoomPaneController.TILE_SIZE;
+        y = Math.round(y / RoomPaneController.TILE_SIZE) * RoomPaneController.TILE_SIZE;
         
         root.setLayoutX(x);
         root.setLayoutY(y);
@@ -154,12 +155,6 @@ public class RoomObjController extends PaneController<RoomObjController>
         roomObjectData.rotation = icon.getRotate();
         
         return roomObjectData;
-    }
-
-    @Override
-    public final Class<?> getBundleClass()
-    {
-        return PluginTableDrawing.class;
     }
 
     @Override

@@ -6,17 +6,17 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import org.lebastudios.theroundtable.MainStageController;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.dialogs.ConfirmationTextDialogController;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
 import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
 import org.lebastudios.theroundtable.ui.IconButton;
 
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,11 +24,11 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
 {
     private static RoomsPaneController instance;
     private static Node tablesUI;
-    private final List<RoomController> roomControllers = new ArrayList<>();
-    public RoomController activeRoom;
-    @FXML private TabPane roomsTabPane;
-    @FXML private IconButton swapModeButton;
-    @FXML private ScrollPane instanciateObjPane;
+    private final List<RoomPaneController> roomPaneControllers = new ArrayList<>();
+    public RoomPaneController activeRoom;
+    @FXML public TabPane roomsTabPane;
+    @FXML public IconButton swapModeButton;
+    @FXML public ScrollPane instanciateObjPane;
 
     public static RoomsPaneController getInstance()
     {
@@ -41,23 +41,11 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
         CashRegister.onOrderItemModified.addListener(_ ->
         {
             CashRegister cashRegister = CashRegister.getInstance();
-            
+
             if (cashRegister.getActualOrder() == cashRegister.getCashRegisterOrder()) return;
-            
+
             activeRoom.saveRoom();
         });
-    }
-
-    @Override
-    public URL getFXML()
-    {
-        return RoomsPaneController.class.getResource("roomsPaneController.fxml");
-    }
-
-    @Override
-    public Class<?> getBundleClass()
-    {
-        return PluginTableDrawing.class;
     }
 
     @FXML
@@ -69,11 +57,11 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
         roomsTabPane.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) ->
         {
             if (newValue == null) return;
-            activeRoom = roomControllers.get(roomsTabPane.getTabs().indexOf(newValue));
+            activeRoom = roomPaneControllers.get(roomsTabPane.getTabs().indexOf(newValue));
         });
 
         roomsTabPane.getSelectionModel().select(0);
-        activeRoom = roomControllers.getFirst();
+        activeRoom = roomPaneControllers.getFirst();
     }
 
     private void loadRooms()
@@ -91,7 +79,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
 
         if (roomFiles.length == 0)
         {
-            newRoom();
+            newRoom(null);
         }
         else
         {
@@ -103,18 +91,22 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     }
 
     @FXML
-    private void newRoom()
+    public void newRoom(ActionEvent actionEvent)
     {
-        new RoomCreationStageController(this::loadRoom).instantiate(true);
+        new RoomCreationStageController(this::loadRoom)
+                .setOwner(this.getStage() == null
+                        ? MainStageController.getInstance().getStage()
+                        : this.getStage()
+                ).instantiate(true);
     }
 
     private void loadRoom(RoomData roomData)
     {
         Tab newTab = new Tab(roomData.roomName);
-        var newRoomController = new RoomController(roomData, roomsTabPane);
+        var newRoomController = new RoomPaneController(roomData, roomsTabPane);
 
         newTab.setContent(newRoomController.getRoot());
-        roomControllers.add(newRoomController);
+        roomPaneControllers.add(newRoomController);
         roomsTabPane.getTabs().add(newTab);
 
         roomsTabPane.getSelectionModel().select(newTab);
@@ -122,43 +114,43 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     }
 
     @FXML
-    private void instantiateNewSquareTable()
+    public void instantiateNewSquareTable(ActionEvent actionEvent)
     {
         activeRoom.instantiateObject(RoomObjData.SQUARE_TABLE);
     }
 
     @FXML
-    private void instantiateNewRoundTable()
+    public void instantiateNewRoundTable(ActionEvent actionEvent)
     {
         activeRoom.instantiateObject(RoomObjData.ROUND_TABLE);
     }
 
     @FXML
-    private void instantiateNewBarStool()
+    public void instantiateNewBarStool(ActionEvent actionEvent)
     {
         activeRoom.instantiateObject(RoomObjData.BAR_STOOL);
     }
 
     @FXML
-    private void instantiateNewBarTable()
+    public void instantiateNewBarTable(ActionEvent actionEvent)
     {
         activeRoom.instantiateObject(RoomObjData.BAR_TABLE);
     }
 
     @FXML
-    private void instantiateNewEstablishmentWall()
+    public void instantiateNewEstablishmentWall(ActionEvent actionEvent)
     {
         activeRoom.instantiateObject(RoomObjData.ESTABLISHMENT_WALL);
     }
 
     public void unloadRoom(RoomData roomData)
     {
-        roomControllers.removeIf(roomController -> roomController.getRoomData().equals(roomData));
+        roomPaneControllers.removeIf(roomController -> roomController.getRoomData().equals(roomData));
         roomsTabPane.getTabs().removeIf(tab -> tab.getText().equals(roomData.roomName));
     }
 
     @FXML
-    private void deleteRoom(ActionEvent actionEvent)
+    public void deleteRoom(ActionEvent actionEvent)
     {
         new ConfirmationTextDialogController(
                 LangFileLoader.getTranslation("textblock.deleteroomconfdialog"),
@@ -174,7 +166,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     }
 
     @FXML
-    private void swapMode(ActionEvent actionEvent)
+    public void swapMode(ActionEvent actionEvent)
     {
         RoomObjController.editMode = !RoomObjController.editMode;
 
