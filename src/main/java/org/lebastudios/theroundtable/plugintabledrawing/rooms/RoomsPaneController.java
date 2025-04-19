@@ -110,7 +110,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
         roomsTabPane.getTabs().add(newTab);
 
         roomsTabPane.getSelectionModel().select(newTab);
-        roomData.save();
+        newRoomController.saveRoom();
     }
 
     @FXML

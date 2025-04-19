@@ -2,6 +2,7 @@ package org.lebastudios.theroundtable.plugintabledrawing;
 
 import javafx.scene.control.Button;
 import org.lebastudios.theroundtable.MainStageController;
+import org.lebastudios.theroundtable.files.JsonFile;
 import org.lebastudios.theroundtable.fxml2java.CompileFxml;
 import org.lebastudios.theroundtable.plugins.IPlugin;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
@@ -30,6 +31,8 @@ public class PluginTableDrawing implements IPlugin
     public void initialize()
     {
         instance = this;
+        
+        PluginTableCamelotEvents.getInstance().roomHasChangedEvent.addListener(JsonFile::save);
     }
 
     @Override

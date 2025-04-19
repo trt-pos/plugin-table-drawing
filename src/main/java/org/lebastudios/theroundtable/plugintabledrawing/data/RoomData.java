@@ -1,14 +1,21 @@
 package org.lebastudios.theroundtable.plugintabledrawing.data;
 
+import lombok.NoArgsConstructor;
+import org.lebastudios.theroundtable.camelot.FromBytes;
+import org.lebastudios.theroundtable.camelot.FromJsonBytesToObject;
+import org.lebastudios.theroundtable.camelot.FromObjectToJsonBytes;
+import org.lebastudios.theroundtable.camelot.IntoBytes;
 import org.lebastudios.theroundtable.files.JsonFile;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.Rooms;
 
 import java.io.File;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RoomData extends JsonFile<RoomData>
+@NoArgsConstructor
+public class RoomData extends JsonFile<RoomData> implements IntoBytes, FromBytes<RoomData>
 {
     public String roomName;
     public double widthInTiles = 36;
@@ -44,24 +51,29 @@ public class RoomData extends JsonFile<RoomData>
     }
 
     @Override
+    public RoomData fromBytes(byte[] bytes) throws ParseException
+    {
+        return new FromJsonBytesToObject<>(this.getClass()).fromBytes(bytes);
+    }
+
+    @Override
+    public byte[] intoBytes()
+    {
+        return new FromObjectToJsonBytes(this).intoBytes();
+    }
+    
+    @Override
     public final boolean equals(Object o)
     {
         if (this == o) return true;
         if (!(o instanceof RoomData roomData)) return false;
 
-        return Double.compare(widthInTiles, roomData.widthInTiles) == 0 &&
-                Double.compare(heightInTiles, roomData.heightInTiles) == 0 &&
-                Objects.equals(roomName, roomData.roomName) &&
-                Objects.equals(roomObjects, roomData.roomObjects);
+        return Double.compare(widthInTiles, roomData.widthInTiles) == 0;
     }
 
     @Override
     public int hashCode()
     {
-        int result = Objects.hashCode(roomName);
-        result = 31 * result + Double.hashCode(widthInTiles);
-        result = 31 * result + Double.hashCode(heightInTiles);
-        result = 31 * result + Objects.hashCode(roomObjects);
-        return result;
+        return Objects.hashCode(roomName);
     }
 }
