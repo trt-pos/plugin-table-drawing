@@ -7,6 +7,7 @@ import javafx.scene.layout.*;
 import lombok.Getter;
 import org.lebastudios.theroundtable.apparience.ImageLoader;
 import org.lebastudios.theroundtable.controllers.PaneController;
+import org.lebastudios.theroundtable.database.Database;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
@@ -14,6 +15,7 @@ import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjCon
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class RoomPaneController extends PaneController<RoomPaneController>
 {
@@ -23,15 +25,23 @@ public class RoomPaneController extends PaneController<RoomPaneController>
     private final double roomHeight;
     
     private final List<RoomObjController> roomObjects = new ArrayList<>();
-    @Getter private final RoomData roomData;
+    @Getter private RoomData roomData;
     private final TabPane parent;
     
     @Getter private Pane tablesPane;
 
-    
+    private final Consumer<RoomData> onRoomChanged = roomData -> 
+    {
+        if (!roomData.equals(this.roomData)) return;
+        
+        this.roomData = roomData;
+        loadFromData(roomData);
+    };
     
     public RoomPaneController(RoomData roomData, TabPane parent)
     {
+        PluginTableCamelotEvents.getInstance().onRoomChanged.addWeakListener(onRoomChanged);
+        
         roomData.updateRoomObjIds();
         
         this.roomData = roomData;
@@ -92,7 +102,7 @@ public class RoomPaneController extends PaneController<RoomPaneController>
             }
         }
         
-        PluginTableCamelotEvents.getInstance().roomHasChangedEvent.invoke(roomData);
+        PluginTableCamelotEvents.getInstance().onRoomChanged.invoke(roomData);
     }
 
     public void deleteRoomObject(RoomObjController roomObjController)

@@ -32,7 +32,7 @@ public class PluginTableDrawing implements IPlugin
     {
         instance = this;
         
-        PluginTableCamelotEvents.getInstance().roomHasChangedEvent.addListener(JsonFile::save);
+        PluginTableCamelotEvents.getInstance().onRoomChanged.addListener(JsonFile::save);
     }
 
     @Override

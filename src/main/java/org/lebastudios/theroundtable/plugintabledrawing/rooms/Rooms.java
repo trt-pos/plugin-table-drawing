@@ -2,6 +2,7 @@ package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
+import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 

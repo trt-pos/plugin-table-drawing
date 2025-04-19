@@ -16,8 +16,18 @@ public class PluginTableCamelotEvents
     
     private PluginTableCamelotEvents() {}
     
-    public final CamelotEvent<RoomData> roomHasChangedEvent = new CamelotEvent<>(
-            "plugin-table-drawing:room-has-changed", 
+    public final CamelotEvent<RoomData> onRoomChanged = new CamelotEvent<>(
+            "plugin-table-drawing:room-changed", 
+            new RoomData()
+    );
+
+    public final CamelotEvent<RoomData> onRoomCreated = new CamelotEvent<>(
+            "plugin-table-drawing:room-created",
+            new RoomData()
+    );
+    
+    public final CamelotEvent<RoomData> onRoomDeleted = new CamelotEvent<>(
+            "plugin-table-drawing:room-deleted",
             new RoomData()
     );
 }
