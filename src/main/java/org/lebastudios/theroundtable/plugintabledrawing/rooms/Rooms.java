@@ -2,7 +2,6 @@ package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 
@@ -43,14 +42,5 @@ public class Rooms
         }
         
         return roomData;
-    }
-
-    public static boolean deleteRoom(RoomData roomData)
-    {
-        var roomFile = roomData.getFile();
-
-        if (roomFile.exists()) return roomFile.delete();
-        
-        return false;
     }
 }

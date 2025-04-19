@@ -68,7 +68,7 @@ public class RoomData extends JsonFile<RoomData> implements IntoBytes, FromBytes
         if (this == o) return true;
         if (!(o instanceof RoomData roomData)) return false;
 
-        return Double.compare(widthInTiles, roomData.widthInTiles) == 0;
+        return roomName.equals(roomData.roomName);
     }
 
     @Override

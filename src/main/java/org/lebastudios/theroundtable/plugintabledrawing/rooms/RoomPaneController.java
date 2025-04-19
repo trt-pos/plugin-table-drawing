@@ -1,5 +1,6 @@
 package org.lebastudios.theroundtable.plugintabledrawing.rooms;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
@@ -7,7 +8,6 @@ import javafx.scene.layout.*;
 import lombok.Getter;
 import org.lebastudios.theroundtable.apparience.ImageLoader;
 import org.lebastudios.theroundtable.controllers.PaneController;
-import org.lebastudios.theroundtable.database.Database;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
@@ -35,7 +35,7 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         if (!roomData.equals(this.roomData)) return;
         
         this.roomData = roomData;
-        loadFromData(roomData);
+        Platform.runLater(() -> loadFromData(roomData));
     };
     
     public RoomPaneController(RoomData roomData, TabPane parent)
