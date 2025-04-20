@@ -9,9 +9,11 @@ import lombok.Getter;
 import org.lebastudios.theroundtable.apparience.ImageLoader;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
+import org.lebastudios.theroundtable.plugintabledrawing.data.OrderModData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.TableObjectController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +40,29 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         Platform.runLater(() -> loadFromData(roomData));
     };
     
+    private final Consumer<OrderModData> onOrderMod = orderModData ->
+    {
+        if (!orderModData.roomName.equals(this.roomData.roomName)) return;
+        
+        for (var roomObject : roomObjects)
+        {
+            if (roomObject.getRoomObjectData().id == orderModData.tableId) 
+            {
+                TableObjectController tableObjectController = (TableObjectController) roomObject; 
+                tableObjectController.setOrder(orderModData.newOrder.intoOrder(tableObjectController.getTableNameLabel().getText()));
+                tableObjectController.updateOrderDecoration();
+                updateRoomData();
+                roomData.save();
+                
+                break;
+            }
+        }
+    };     
+    
     public RoomPaneController(RoomData roomData, TabPane parent)
     {
         PluginTableCamelotEvents.getInstance().onRoomChanged.addWeakListener(onRoomChanged);
+        PluginTableCamelotEvents.getInstance().onOrderMod.addWeakListener(onOrderMod);
         
         roomData.updateRoomObjIds();
         
@@ -87,10 +109,39 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         table.getController().setPosition(0, 0);
         roomObjects.add(table.getController());
         
-        saveRoom();
+        onRoomDataUpdated();
     }
 
-    public void saveRoom()
+    public void deleteRoomObject(RoomObjController roomObjController)
+    {
+        roomObjects.remove(roomObjController);
+        tablesPane.getChildren().remove(roomObjController.getRoot());
+        
+        onRoomDataUpdated();
+    }
+
+    private void loadFromData(RoomData roomData)
+    {
+        tablesPane.getChildren().clear();
+        roomObjects.clear();
+
+        for (var roomObjectData : roomData.roomObjects)
+        {
+            var newTable = roomObjectData.intoController(this);
+
+            tablesPane.getChildren().add(newTable.getRoot());
+            roomObjects.add(newTable.getController());
+        }
+    }
+    
+    public void onRoomDataUpdated()
+    {
+        updateRoomData();
+
+        PluginTableCamelotEvents.getInstance().onRoomChanged.invoke(roomData);
+    }
+
+    private void updateRoomData()
     {
         roomData.roomObjects.clear();
 
@@ -100,30 +151,6 @@ public class RoomPaneController extends PaneController<RoomPaneController>
             {
                 roomData.roomObjects.add(roomObjController.getInstanceObjData());
             }
-        }
-        
-        PluginTableCamelotEvents.getInstance().onRoomChanged.invoke(roomData);
-    }
-
-    public void deleteRoomObject(RoomObjController roomObjController)
-    {
-        roomObjects.remove(roomObjController);
-        tablesPane.getChildren().remove(roomObjController.getRoot());
-        
-        saveRoom();
-    }
-
-    private void loadFromData(RoomData roomData)
-    {
-        tablesPane.getChildren().clear();
-        roomObjects.clear();
-        
-        for (var roomObjectData : roomData.roomObjects)
-        {
-            var newTable = roomObjectData.intoController(this);
-
-            tablesPane.getChildren().add(newTable.getRoot());
-            roomObjects.add(newTable.getController());
         }
     }
 

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
+import lombok.Getter;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
@@ -18,7 +19,7 @@ import java.net.URL;
 public class RoomObjController extends PaneController<RoomObjController>
 {
     public static boolean editMode = false;
-    protected final RoomObjData roomObjectData;
+    @Getter protected final RoomObjData roomObjectData;
     protected final RoomPaneController roomPaneController;
     @FXML public Node root;
     @FXML public IconButton icon;
@@ -129,7 +130,7 @@ public class RoomObjController extends PaneController<RoomObjController>
         {
             if (!editMode) return;
 
-            RoomsPaneController.getInstance().activeRoom.saveRoom();
+            RoomsPaneController.getInstance().activeRoom.onRoomDataUpdated();
         });
     }
 

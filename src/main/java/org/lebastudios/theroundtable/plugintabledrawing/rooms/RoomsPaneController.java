@@ -12,8 +12,7 @@ import org.lebastudios.theroundtable.dialogs.ConfirmationTextDialogController;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
 import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
+import org.lebastudios.theroundtable.plugintabledrawing.data.*;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
 import org.lebastudios.theroundtable.ui.IconButton;
 
@@ -46,11 +45,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     {
         CashRegister.onOrderItemModified.addListener(_ ->
         {
-            CashRegister cashRegister = CashRegister.getInstance();
-
-            if (cashRegister.getActualOrder() == cashRegister.getCashRegisterOrder()) return;
-
-            activeRoom.saveRoom();
+            PluginTableCamelotEvents.getInstance().invokeOnOrderModEvent();
         });
     }
     

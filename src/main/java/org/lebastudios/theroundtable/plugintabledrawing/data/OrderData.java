@@ -22,10 +22,10 @@ public class OrderData
         return orderData;
     }
     
-    public Order intoOrder(RoomObjData roomObjData)
+    public Order intoOrder(String tableName)
     {
         Order order = new Order();
-        order.setOrderName(roomObjData.tableName);
+        order.setOrderName(tableName);
         
         List<OrderItem> orderItems = new ArrayList<>();
         
