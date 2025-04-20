@@ -142,7 +142,9 @@ public class TableObjectController extends RoomObjController
                 newText = newText.trim();
 
                 tableNameLabel.setText(newText);
-            }, LangFileLoader.getTranslation("title.newtablereqtext"), "Rename", null).instantiate(true);
+            }, LangFileLoader.getTranslation("title.newtablereqtext"), "Rename", null)
+                    .setOwner(this.getStage())
+                    .instantiate(true);
 
             order.setOrderName(tableNameLabel.getText());
             RoomsPaneController.getInstance().activeRoom.onRoomDataUpdated();

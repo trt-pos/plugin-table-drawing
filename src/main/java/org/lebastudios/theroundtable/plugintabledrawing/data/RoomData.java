@@ -18,8 +18,8 @@ import java.util.Objects;
 public class RoomData extends JsonFile<RoomData> implements IntoBytes, FromBytes<RoomData>
 {
     public String roomName;
-    public double widthInTiles = 36;
-    public double heightInTiles = 21;
+    public double widthInTiles = 24;
+    public double heightInTiles = 24;
     public int nextObjId = 1;
     public List<RoomObjData> roomObjects = new ArrayList<>();
 

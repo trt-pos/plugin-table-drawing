@@ -9,10 +9,13 @@ import javafx.scene.control.TabPane;
 import org.lebastudios.theroundtable.MainStageController;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.dialogs.ConfirmationTextDialogController;
+import org.lebastudios.theroundtable.dialogs.FormDialogController;
 import org.lebastudios.theroundtable.locale.LangFileLoader;
 import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
-import org.lebastudios.theroundtable.plugintabledrawing.data.*;
+import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
+import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
+import org.lebastudios.theroundtable.plugintabledrawing.forms.RoomFormPaneController;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
 import org.lebastudios.theroundtable.ui.IconButton;
 
@@ -28,13 +31,13 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     @FXML public TabPane roomsTabPane;
     @FXML public IconButton swapModeButton;
     @FXML public ScrollPane instanciateObjPane;
-    
+
     private final List<RoomPaneController> roomPaneControllers = new ArrayList<>();
     private final Consumer<RoomData> onRoomDeleted = this::deleteRoom;
     private final Consumer<RoomData> onRoomCreated = this::loadRoom;
-    
+
     public RoomPaneController activeRoom;
-    
+
     public static RoomsPaneController getInstance()
     {
         if (instance == null) instance = new RoomsPaneController();
@@ -48,7 +51,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
             PluginTableCamelotEvents.getInstance().invokeOnOrderModEvent();
         });
     }
-    
+
     @FXML
     @Override
     protected void initialize()
@@ -57,7 +60,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
 
         PluginTableCamelotEvents.getInstance().onRoomDeleted.addWeakListener(onRoomDeleted);
         PluginTableCamelotEvents.getInstance().onRoomCreated.addWeakListener(onRoomCreated);
-        
+
         roomsTabPane.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) ->
         {
             if (newValue == null) return;
@@ -107,14 +110,14 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
             roomsTabPane.getTabs().add(newTab);
             roomsTabPane.getSelectionModel().select(newTab);
         });
-        
+
         roomData.save();
     }
 
     public void deleteRoom(RoomData roomData)
     {
         roomData.delete();
-        
+
         roomPaneControllers.removeIf(roomController -> roomController.getRoomData().equals(roomData));
         Platform.runLater(() -> roomsTabPane.getTabs().removeIf(tab -> tab.getText().equals(roomData.roomName)));
     }
@@ -122,13 +125,11 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     @FXML
     public void newRoom(ActionEvent actionEvent)
     {
-        new RoomCreationStageController(roomData ->
-        {
-            PluginTableCamelotEvents.getInstance().onRoomCreated.invoke(roomData);
-        }).setOwner(this.getStage() == null
-                ? MainStageController.getInstance().getStage()
-                : this.getStage()
-        ).instantiate(true);
+        new FormDialogController<>(new RoomFormPaneController(), new RoomData())
+                .setOwner(this.getStage() == null
+                        ? MainStageController.getInstance().getStage()
+                        : this.getStage()
+                ).instantiate();
     }
 
     @FXML
@@ -160,7 +161,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     {
         activeRoom.instantiateObject(RoomObjData.ESTABLISHMENT_WALL);
     }
-    
+
     @FXML
     public void deleteRoom(ActionEvent actionEvent)
     {
