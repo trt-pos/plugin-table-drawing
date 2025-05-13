@@ -5,7 +5,6 @@ import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
 import org.lebastudios.theroundtable.plugintabledrawing.data.OrderData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.OrderModData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.TableObjectController;
 

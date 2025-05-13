@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
 
-
+<?import javafx.scene.layout.Pane?>
 <Pane fx:controller="org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController"
-      xmlns="http://javafx.com/javafx/17.0.12" 
+      xmlns="http://javafx.com/javafx/17.0.12"
       xmlns:fx="http://javafx.com/fxml/1" />
