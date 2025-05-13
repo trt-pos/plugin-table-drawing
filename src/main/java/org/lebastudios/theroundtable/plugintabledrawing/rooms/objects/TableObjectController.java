@@ -9,13 +9,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import lombok.Getter;
 import org.controlsfx.control.decoration.GraphicDecoration;
-import org.lebastudios.theroundtable.MainStageController;
 import org.lebastudios.theroundtable.apparience.ImageLoader;
 import org.lebastudios.theroundtable.dialogs.RequestTextDialogController;
 import org.lebastudios.theroundtable.events.PluginEvents;
-import org.lebastudios.theroundtable.locale.LangFileLoader;
+import org.lebastudios.theroundtable.locale.Translator;
 import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
-import org.lebastudios.theroundtable.plugincashregister.cash.CashRegisterPaneController;
 import org.lebastudios.theroundtable.plugincashregister.cash.Order;
 import org.lebastudios.theroundtable.plugincashregister.cash.OrderItem;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
@@ -102,7 +100,7 @@ public class TableObjectController extends RoomObjController
         var contextMenu = new ContextMenu();
 
         // Rotate Left Button
-        var menuItem_0 = new MenuItem(LangFileLoader.getTranslation("phrase.rotateleft"));
+        var menuItem_0 = new MenuItem(Translator.getInstance().t("phrase.rotateleft"));
         var graphic = new IconView("rotate-left.png");
         graphic.setIconSize(24);
         menuItem_0.setGraphic(graphic);
@@ -113,7 +111,7 @@ public class TableObjectController extends RoomObjController
         });
 
         // Rotate Right Button
-        var menuItem_1 = new MenuItem(LangFileLoader.getTranslation("phrase.rotateright"));
+        var menuItem_1 = new MenuItem(Translator.getInstance().t("phrase.rotateright"));
         graphic = new IconView("rotate-right.png");
         graphic.setIconSize(24);
         menuItem_1.setGraphic(graphic);
@@ -124,7 +122,7 @@ public class TableObjectController extends RoomObjController
         });
 
         // Rename Button
-        var firstMenuItem = new MenuItem(LangFileLoader.getTranslation("word.rename"));
+        var firstMenuItem = new MenuItem(Translator.getInstance().t("word.rename"));
         graphic = new IconView("rename.png");
         graphic.setIconSize(24);
         firstMenuItem.setGraphic(graphic);
@@ -142,7 +140,7 @@ public class TableObjectController extends RoomObjController
                 newText = newText.trim();
 
                 tableNameLabel.setText(newText);
-            }, LangFileLoader.getTranslation("title.newtablereqtext"), "Rename", null)
+            }, Translator.getInstance().t("title.newtablereqtext"), "Rename", null)
                     .setOwner(this.getStage())
                     .instantiate(true);
 
@@ -151,7 +149,7 @@ public class TableObjectController extends RoomObjController
         });
 
         // Delete Button
-        var secondMenuItem = new MenuItem(LangFileLoader.getTranslation("word.delete"));
+        var secondMenuItem = new MenuItem(Translator.getInstance().t("word.delete"));
         graphic = new IconView("delete.png");
         graphic.setIconSize(24);
         secondMenuItem.setGraphic(graphic);

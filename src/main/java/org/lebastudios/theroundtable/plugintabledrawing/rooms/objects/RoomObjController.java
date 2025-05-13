@@ -6,7 +6,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import lombok.Getter;
 import org.lebastudios.theroundtable.controllers.PaneController;
-import org.lebastudios.theroundtable.locale.LangFileLoader;
+import org.lebastudios.theroundtable.locale.Translator;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjectType;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController;
@@ -72,7 +72,7 @@ public class RoomObjController extends PaneController<RoomObjController>
         var contextMenu = new ContextMenu();
 
         // Delete Button
-        var menuItem_0 = new MenuItem(LangFileLoader.getTranslation("word.delete"));
+        var menuItem_0 = new MenuItem(Translator.getInstance().t("word.delete"));
         var graphic = new IconView("delete.png");
         graphic.setIconSize(24);
         menuItem_0.setGraphic(graphic);

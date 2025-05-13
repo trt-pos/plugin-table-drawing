@@ -10,7 +10,7 @@ import org.lebastudios.theroundtable.MainStageController;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.dialogs.ConfirmationTextDialogController;
 import org.lebastudios.theroundtable.dialogs.FormDialogController;
-import org.lebastudios.theroundtable.locale.LangFileLoader;
+import org.lebastudios.theroundtable.locale.Translator;
 import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
@@ -166,7 +166,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     public void deleteRoom(ActionEvent actionEvent)
     {
         new ConfirmationTextDialogController(
-                LangFileLoader.getTranslation("textblock.deleteroomconfdialog"),
+                Translator.getInstance().t("textblock.deleteroomconfdialog"),
                 result ->
                 {
                     if (!result) return;

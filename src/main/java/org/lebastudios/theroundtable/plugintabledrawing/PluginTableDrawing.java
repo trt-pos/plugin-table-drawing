@@ -20,6 +20,8 @@ public class PluginTableDrawing implements IPlugin
 {
     private static PluginTableDrawing instance;
 
+    private static final int DB_VERSION = 1;
+    
     public static PluginTableDrawing getInstance()
     {
         if (instance == null) throw new IllegalStateException("This plugin has to be instantiated");
@@ -55,5 +57,11 @@ public class PluginTableDrawing implements IPlugin
         ));
 
         return newButton;
+    }
+
+    @Override
+    public int getDatabaseVersion()
+    {
+        return DB_VERSION;
     }
 }
