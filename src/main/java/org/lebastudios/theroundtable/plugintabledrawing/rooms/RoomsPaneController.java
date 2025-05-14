@@ -17,7 +17,7 @@ import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 import org.lebastudios.theroundtable.plugintabledrawing.forms.RoomFormPaneController;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
-import org.lebastudios.theroundtable.ui.IconButton;
+import org.lebastudios.theroundtable.components.IconButton;
 
 import java.io.File;
 import java.util.ArrayList;

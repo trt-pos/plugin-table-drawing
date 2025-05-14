@@ -6,7 +6,7 @@ import org.lebastudios.theroundtable.files.JsonFile;
 import org.lebastudios.theroundtable.fxml2java.CompileFxml;
 import org.lebastudios.theroundtable.plugins.IPlugin;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
-import org.lebastudios.theroundtable.ui.IconButton;
+import org.lebastudios.theroundtable.components.IconButton;
 
 import java.util.ArrayList;
 import java.util.List;

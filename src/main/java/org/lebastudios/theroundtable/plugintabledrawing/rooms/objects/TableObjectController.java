@@ -21,7 +21,7 @@ import org.lebastudios.theroundtable.plugintabledrawing.data.OrderData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
-import org.lebastudios.theroundtable.ui.IconView;
+import org.lebastudios.theroundtable.components.IconView;
 
 public class TableObjectController extends RoomObjController
 {

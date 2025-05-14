@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import org.lebastudios.theroundtable.ui.IconButton?>
+<?import org.lebastudios.theroundtable.components.IconButton?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
       xmlns="http://javafx.com/javafx/17.0.2-ea">
     <VBox mouseTransparent="true" alignment="CENTER" spacing="5">

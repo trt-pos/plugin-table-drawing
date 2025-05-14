@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.*?>
-<?import org.lebastudios.theroundtable.ui.*?>
+<?import org.lebastudios.theroundtable.components.*?>
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
       fx:controller="org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController"
