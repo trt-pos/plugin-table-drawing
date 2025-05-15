@@ -81,7 +81,7 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         
         loadFromData(roomData);
 
-        Image image = ImageLoader.getTexture("establishment-floor-tile.png", PluginTableDrawing.class);
+        Image image = ImageLoader.getTexture("establishment-floor-tile.png");
         BackgroundImage backgroundImage = new BackgroundImage(
                 image,
                 BackgroundRepeat.REPEAT, // Repetir en X
