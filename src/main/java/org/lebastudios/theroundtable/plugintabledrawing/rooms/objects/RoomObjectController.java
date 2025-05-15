@@ -1,7 +1,6 @@
 package org.lebastudios.theroundtable.plugintabledrawing.rooms.objects;
 
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import lombok.Getter;
@@ -14,19 +13,16 @@ import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneControlle
 import org.lebastudios.theroundtable.components.IconButton;
 import org.lebastudios.theroundtable.components.IconView;
 
-import java.net.URL;
-
-public class RoomObjController extends PaneController<RoomObjController>
+public class RoomObjectController extends PaneController<RoomObjectController>
 {
     public static boolean editMode = false;
     @Getter protected final RoomObjData roomObjectData;
     protected final RoomPaneController roomPaneController;
-    @FXML public Node root;
     @FXML public IconButton icon;
 
-    public RoomObjController(RoomObjData roomObjData, RoomPaneController roomPaneController)
+    public RoomObjectController(RoomObjData roomObjData, RoomPaneController roomPaneController)
     {
-        if (this.getClass().equals(RoomObjController.class)) 
+        if (this.getClass().equals(RoomObjectController.class)) 
         {
             if (roomObjData.roomObjectType == RoomObjectType.SQUARE || roomObjData.roomObjectType == RoomObjectType.ROUND ||
                     roomObjData.roomObjectType == RoomObjectType.BAR_STOOL)
@@ -35,7 +31,7 @@ public class RoomObjController extends PaneController<RoomObjController>
             }
         }
         
-        if (this.getClass().equals(TableObjectController.class))
+        if (this.getClass().equals(OrderStationController.class))
         {
             if (roomObjData.roomObjectType == RoomObjectType.ESTABLISHMENT_WALL || roomObjData.roomObjectType == RoomObjectType.BAR_TABLE)
             {
@@ -159,17 +155,18 @@ public class RoomObjController extends PaneController<RoomObjController>
     }
 
     @Override
-    public final URL getFXML()
+    public void loadFXML()
     {
-        var fxmlObject = switch (this.roomObjectData.roomObjectType)
+        this.root = new org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObject$View(this);
+        
+        String iconName = switch (this.roomObjectData.roomObjectType)
         {
-            case SQUARE -> "squareTableObject.fxml";
-            case ROUND -> "roundTableObject.fxml";
-            case BAR_STOOL -> "barStoolObject.fxml";
-            case ESTABLISHMENT_WALL -> "establishmentWallObject.fxml";
-            case BAR_TABLE -> "barTableObject.fxml";
+            case ESTABLISHMENT_WALL -> "edit-map-establishment-wall.png";
+            case BAR_TABLE -> "edit-map-bar-table.png";
+            default -> throw new IllegalStateException("Unexpected value: " + this.roomObjectData.roomObjectType);
         };
 
-        return RoomObjController.class.getResource(fxmlObject);
+        this.icon.setIconName(iconName);
+        this.initialize();
     }
 }

@@ -6,7 +6,7 @@ import org.lebastudios.theroundtable.plugintabledrawing.data.OrderData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.OrderModData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.TableObjectController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.OrderStationController;
 
 public class PluginTableCamelotEvents
 {
@@ -48,8 +48,8 @@ public class PluginTableCamelotEvents
         if (cashRegister.getActualOrder() == cashRegister.getCashRegisterOrder()) return;
 
         String roomName = RoomsPaneController.getInstance().activeRoom.getRoomData().roomName;
-        int tableId = TableObjectController.lastCLickedTable.getRoomObjectData().id;
-        OrderData order = OrderData.fromOrder(TableObjectController.lastCLickedTable.getOrder());
+        int tableId = OrderStationController.lastCLickedTable.getRoomObjectData().id;
+        OrderData order = OrderData.fromOrder(OrderStationController.lastCLickedTable.getOrder());
 
         OrderModData modData = new OrderModData(
                 roomName,

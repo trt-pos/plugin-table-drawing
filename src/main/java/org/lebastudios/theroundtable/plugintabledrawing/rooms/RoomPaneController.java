@@ -9,11 +9,12 @@ import lombok.Getter;
 import org.lebastudios.theroundtable.apparience.ImageLoader;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
+import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.OrderModData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.TableObjectController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjectController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.OrderStationController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class RoomPaneController extends PaneController<RoomPaneController>
     private final double roomWidth;
     private final double roomHeight;
     
-    private final List<RoomObjController> roomObjects = new ArrayList<>();
+    private final List<RoomObjectController> roomObjects = new ArrayList<>();
     @Getter private RoomData roomData;
     private final TabPane parent;
     
@@ -48,9 +49,10 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         {
             if (roomObject.getRoomObjectData().id == orderModData.tableId) 
             {
-                TableObjectController tableObjectController = (TableObjectController) roomObject; 
-                tableObjectController.setOrder(orderModData.newOrder.intoOrder(tableObjectController.getTableNameLabel().getText()));
-                tableObjectController.updateOrderDecoration();
+                OrderStationController orderStationController = (OrderStationController) roomObject; 
+                orderStationController.setOrder(orderModData.newOrder.intoOrder(
+                        orderStationController.getTableNameLabel().getText()));
+                orderStationController.updateOrderDecoration();
                 updateRoomData();
                 roomData.save();
                 
@@ -79,7 +81,7 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         
         loadFromData(roomData);
 
-        Image image = ImageLoader.getTexture("establishment-floor-tile.png");
+        Image image = ImageLoader.getTexture("establishment-floor-tile.png", PluginTableDrawing.class);
         BackgroundImage backgroundImage = new BackgroundImage(
                 image,
                 BackgroundRepeat.REPEAT, // Repetir en X
@@ -112,10 +114,10 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         onRoomDataUpdated();
     }
 
-    public void deleteRoomObject(RoomObjController roomObjController)
+    public void deleteRoomObject(RoomObjectController roomObjectController)
     {
-        roomObjects.remove(roomObjController);
-        tablesPane.getChildren().remove(roomObjController.getRoot());
+        roomObjects.remove(roomObjectController);
+        tablesPane.getChildren().remove(roomObjectController.getRoot());
         
         onRoomDataUpdated();
     }
@@ -147,9 +149,9 @@ public class RoomPaneController extends PaneController<RoomPaneController>
 
         for (var roomObject : roomObjects)
         {
-            if (roomObject instanceof RoomObjController roomObjController)
+            if (roomObject instanceof RoomObjectController roomObjectController)
             {
-                roomData.roomObjects.add(roomObjController.getInstanceObjData());
+                roomData.roomObjects.add(roomObjectController.getInstanceObjData());
             }
         }
     }

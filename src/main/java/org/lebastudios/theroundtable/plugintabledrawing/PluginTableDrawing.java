@@ -13,7 +13,9 @@ import java.util.List;
 
 @CompileFxml(
         directories = {
+                "org/lebastudios/theroundtable/plugintabledrawing/forms",
                 "org/lebastudios/theroundtable/plugintabledrawing/rooms",
+                "org/lebastudios/theroundtable/plugintabledrawing/rooms/objects",
         }
 )
 public class PluginTableDrawing implements IPlugin
@@ -52,7 +54,7 @@ public class PluginTableDrawing implements IPlugin
         var newButton = new IconButton("table.png");
 
         newButton.setOnAction(_ -> MainStageController.getInstance().setCentralNode(
-                RoomsPaneController.getInstance().getRoot()
+                RoomsPaneController.getInstance()
 
         ));
 

@@ -23,15 +23,15 @@ import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController
 import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
 import org.lebastudios.theroundtable.components.IconView;
 
-public class TableObjectController extends RoomObjController
+public class OrderStationController extends RoomObjectController
 {
-    public static TableObjectController lastCLickedTable = null;
+    public static OrderStationController lastCLickedTable = null;
 
     @Getter private Order order;
     @Getter @FXML public Label tableNameLabel;
     private ImageView orderDecorationIcon;
 
-    public TableObjectController(RoomObjData roomObjectData, RoomPaneController parentController)
+    public OrderStationController(RoomObjData roomObjectData, RoomPaneController parentController)
     {
         super(roomObjectData, parentController);
 
@@ -168,5 +168,22 @@ public class TableObjectController extends RoomObjController
         roomObjData.tableName = tableNameLabel.getText();
         roomObjData.orderData = OrderData.fromOrder(order);
         return roomObjData;
+    }
+
+    @Override
+    public void loadFXML()
+    {
+        this.root = new org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.OrderStation$View(this);
+        
+        String iconName = switch (this.roomObjectData.roomObjectType)
+        {
+            case BAR_STOOL -> "edit-map-bar-stool.png";
+            case ROUND -> "edit-map-round-table.png";
+            case SQUARE -> "edit-map-square-table.png";
+            default -> throw new IllegalStateException("Unexpected value: " + this.roomObjectData.roomObjectType);
+        };
+        
+        this.icon.setIconName(iconName);
+        this.initialize();
     }
 }

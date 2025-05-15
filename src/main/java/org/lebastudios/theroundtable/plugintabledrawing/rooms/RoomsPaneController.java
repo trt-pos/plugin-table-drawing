@@ -16,7 +16,7 @@ import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
 import org.lebastudios.theroundtable.plugintabledrawing.forms.RoomFormPaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjController;
+import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjectController;
 import org.lebastudios.theroundtable.components.IconButton;
 
 import java.io.File;
@@ -179,9 +179,9 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     @FXML
     public void swapMode(ActionEvent actionEvent)
     {
-        RoomObjController.editMode = !RoomObjController.editMode;
+        RoomObjectController.editMode = !RoomObjectController.editMode;
 
-        if (RoomObjController.editMode)
+        if (RoomObjectController.editMode)
         {
             swapModeButton.setIconName("exit.png");
             instanciateObjPane.setVisible(true);

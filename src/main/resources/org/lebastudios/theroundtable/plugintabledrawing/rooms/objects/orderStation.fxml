@@ -7,7 +7,7 @@
 <Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
       xmlns="http://javafx.com/javafx/17.0.2-ea">
     <VBox mouseTransparent="true" alignment="CENTER" spacing="5">
-        <IconButton fx:id="icon" iconSize="-1" iconName="edit-map-round-table.png"/>
+        <IconButton fx:id="icon" iconSize="-1" />
         <Label textAlignment="CENTER" alignment="CENTER" wrapText="true" fx:id="tableNameLabel" layoutY="24.0" text="Name"/>
     </VBox>
 </Pane>
