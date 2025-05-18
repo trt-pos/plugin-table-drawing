@@ -21,8 +21,6 @@ import java.util.List;
 public class PluginTableDrawing implements IPlugin
 {
     private static PluginTableDrawing instance;
-
-    private static final int DB_VERSION = 1;
     
     public static PluginTableDrawing getInstance()
     {
@@ -59,11 +57,5 @@ public class PluginTableDrawing implements IPlugin
         ));
 
         return newButton;
-    }
-
-    @Override
-    public int getDatabaseVersion()
-    {
-        return DB_VERSION;
     }
 }

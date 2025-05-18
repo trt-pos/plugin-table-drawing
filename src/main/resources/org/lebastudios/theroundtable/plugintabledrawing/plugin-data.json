@@ -1,17 +1,17 @@
 {
-  "pluginName": "Table Drawing",
-  "pluginId": "plugin-table-drawing",
-  "pluginDescription": "Draw and manage the tables is your establishment",
+  "pluginName": "Floor Planning",
+  "pluginId": "floor-plan",
+  "pluginDescription": "Visually design and manage your establishment’s table layout, including round tables, bar stools, and more.",
   "pluginVersion": "3.0.0",
   "pluginVendor": "Leba Studios - Software Solutions",
   "pluginVendorUrl": "https://lebastudios.org",
   "pluginDependencies": [
     {
-      "pluginId": "desktop-app",
+      "pluginId": "core",
       "pluginVersion": "3.0.0"
     },
     {
-      "pluginId": "plugin-cash-register",
+      "pluginId": "cr",
       "pluginVersion": "3.0.0"
     }
   ]
