@@ -21,11 +21,11 @@
                     <Insets right="10" bottom="10" left="10"/>
                 </padding>
 
-                <IconButton onAction="#instantiateNewSquareTable" iconName="table.png"/>
-                <IconButton onAction="#instantiateNewRoundTable" iconName="round-table.png"/>
-                <IconButton onAction="#instantiateNewBarStool" iconName="bar-chair.png"/>
-                <IconButton onAction="#instantiateNewBarTable" iconName="bar-bar.png"/>
-                <IconButton onAction="#instantiateNewEstablishmentWall" iconName="establishment-wall.png"/>
+                <IconButton onAction="#instantiateNewSquareTable" iconName="floor-plan:table.png"/>
+                <IconButton onAction="#instantiateNewRoundTable" iconName="floor-plan:round-table.png"/>
+                <IconButton onAction="#instantiateNewBarStool" iconName="floor-plan:bar-chair.png"/>
+                <IconButton onAction="#instantiateNewBarTable" iconName="floor-plan:bar-bar.png"/>
+                <IconButton onAction="#instantiateNewEstablishmentWall" iconName="floor-plan:establishment-wall.png"/>
 
             </VBox>
         </content>
@@ -33,9 +33,9 @@
 
     <VBox HBox.hgrow="ALWAYS" spacing="10">
         <HBox spacing="15" alignment="CENTER_LEFT">
-            <IconButton fx:id="swapModeButton" onAction="#swapMode" iconName="edit.png"/>
-            <IconButton onAction="#newRoom" iconName="new-tab.png"/>
-            <IconButton onAction="#deleteRoom" iconName="delete.png"/>
+            <IconButton fx:id="swapModeButton" onAction="#swapMode" iconName="floor-plan:edit.png"/>
+            <IconButton onAction="#newRoom" iconName="floor-plan:new-tab.png"/>
+            <IconButton onAction="#deleteRoom" iconName="floor-plan:delete.png"/>
         </HBox>
 
         <TabPane HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" fx:id="roomsTabPane" tabClosingPolicy="UNAVAILABLE"/>

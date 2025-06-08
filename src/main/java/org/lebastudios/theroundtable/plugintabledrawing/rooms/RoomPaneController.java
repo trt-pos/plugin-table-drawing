@@ -6,10 +6,9 @@ import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import lombok.Getter;
-import org.lebastudios.theroundtable.apparience.ImageLoader;
+import org.lebastudios.theroundtable.apparience.ImageManager;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
 import org.lebastudios.theroundtable.plugintabledrawing.data.OrderModData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
 import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
@@ -81,7 +80,7 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         
         loadFromData(roomData);
 
-        Image image = ImageLoader.getTexture("establishment-floor-tile.png");
+        Image image = ImageManager.getInstance().get("floor-plan:establishment-floor-tile.png", ImageManager.ImageType.TEXTURE);
         BackgroundImage backgroundImage = new BackgroundImage(
                 image,
                 BackgroundRepeat.REPEAT, // Repetir en X

@@ -42,20 +42,15 @@ public class PluginTableDrawing implements IPlugin
     {
         var buttonsList = new ArrayList<Button>();
 
-        buttonsList.add(loadTablesButton());
-
-        return buttonsList;
-    }
-
-    private Button loadTablesButton()
-    {
-        var newButton = new IconButton("table.png");
+        var newButton = new IconButton("floor-plan:table.png");
 
         newButton.setOnAction(_ -> MainStageController.getInstance().setCentralNode(
                 RoomsPaneController.getInstance()
 
         ));
+        
+        buttonsList.add(newButton);
 
-        return newButton;
+        return buttonsList;
     }
 }

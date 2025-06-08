@@ -9,7 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import lombok.Getter;
 import org.controlsfx.control.decoration.GraphicDecoration;
-import org.lebastudios.theroundtable.apparience.ImageLoader;
+import org.lebastudios.theroundtable.apparience.ImageManager;
 import org.lebastudios.theroundtable.dialogs.RequestTextDialogController;
 import org.lebastudios.theroundtable.events.PluginEvents;
 import org.lebastudios.theroundtable.locale.Translator;
@@ -82,7 +82,7 @@ public class OrderStationController extends RoomObjectController
     {
         var image = order.getOrderItems().isEmpty()
                 ? null
-                : ImageLoader.getIcon("receipt.png");
+                : ImageManager.getInstance().get("floor-plan:receipt.png", ImageManager.ImageType.ICON);
 
         orderDecorationIcon.setImage(image);
     }
@@ -101,7 +101,7 @@ public class OrderStationController extends RoomObjectController
 
         // Rotate Left Button
         var menuItem_0 = new MenuItem(Translator.getInstance().t("floor-plan:phrase.rotateleft"));
-        var graphic = new IconView("rotate-left.png");
+        var graphic = new IconView("floor-plan:rotate-left.png");
         graphic.setIconSize(24);
         menuItem_0.setGraphic(graphic);
         menuItem_0.setOnAction(_ ->
@@ -112,7 +112,7 @@ public class OrderStationController extends RoomObjectController
 
         // Rotate Right Button
         var menuItem_1 = new MenuItem(Translator.getInstance().t("floor-plan:phrase.rotateright"));
-        graphic = new IconView("rotate-right.png");
+        graphic = new IconView("floor-plan:rotate-right.png");
         graphic.setIconSize(24);
         menuItem_1.setGraphic(graphic);
         menuItem_1.setOnAction(_ ->
@@ -123,7 +123,7 @@ public class OrderStationController extends RoomObjectController
 
         // Rename Button
         var firstMenuItem = new MenuItem(Translator.getInstance().t("floor-plan:word.rename"));
-        graphic = new IconView("rename.png");
+        graphic = new IconView("floor-plan:rename.png");
         graphic.setIconSize(24);
         firstMenuItem.setGraphic(graphic);
         firstMenuItem.setOnAction(_ ->
@@ -150,7 +150,7 @@ public class OrderStationController extends RoomObjectController
 
         // Delete Button
         var secondMenuItem = new MenuItem(Translator.getInstance().t("floor-plan:word.delete"));
-        graphic = new IconView("delete.png");
+        graphic = new IconView("floor-plan:delete.png");
         graphic.setIconSize(24);
         secondMenuItem.setGraphic(graphic);
         secondMenuItem.setOnAction(_ -> RoomsPaneController.getInstance().activeRoom.deleteRoomObject(this));
