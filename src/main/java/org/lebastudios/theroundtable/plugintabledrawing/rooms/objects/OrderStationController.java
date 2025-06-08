@@ -100,7 +100,7 @@ public class OrderStationController extends RoomObjectController
         var contextMenu = new ContextMenu();
 
         // Rotate Left Button
-        var menuItem_0 = new MenuItem(Translator.getInstance().t("phrase.rotateleft"));
+        var menuItem_0 = new MenuItem(Translator.getInstance().t("floor-plan:phrase.rotateleft"));
         var graphic = new IconView("rotate-left.png");
         graphic.setIconSize(24);
         menuItem_0.setGraphic(graphic);
@@ -111,7 +111,7 @@ public class OrderStationController extends RoomObjectController
         });
 
         // Rotate Right Button
-        var menuItem_1 = new MenuItem(Translator.getInstance().t("phrase.rotateright"));
+        var menuItem_1 = new MenuItem(Translator.getInstance().t("floor-plan:phrase.rotateright"));
         graphic = new IconView("rotate-right.png");
         graphic.setIconSize(24);
         menuItem_1.setGraphic(graphic);
@@ -122,7 +122,7 @@ public class OrderStationController extends RoomObjectController
         });
 
         // Rename Button
-        var firstMenuItem = new MenuItem(Translator.getInstance().t("word.rename"));
+        var firstMenuItem = new MenuItem(Translator.getInstance().t("floor-plan:word.rename"));
         graphic = new IconView("rename.png");
         graphic.setIconSize(24);
         firstMenuItem.setGraphic(graphic);
@@ -140,7 +140,7 @@ public class OrderStationController extends RoomObjectController
                 newText = newText.trim();
 
                 tableNameLabel.setText(newText);
-            }, Translator.getInstance().t("title.newtablereqtext"), "Rename", null)
+            }, Translator.getInstance().t("floor-plan:title.newtablereqtext"), "Rename", null)
                     .setOwner(this.getStage())
                     .instantiate(true);
 
@@ -149,7 +149,7 @@ public class OrderStationController extends RoomObjectController
         });
 
         // Delete Button
-        var secondMenuItem = new MenuItem(Translator.getInstance().t("word.delete"));
+        var secondMenuItem = new MenuItem(Translator.getInstance().t("floor-plan:word.delete"));
         graphic = new IconView("delete.png");
         graphic.setIconSize(24);
         secondMenuItem.setGraphic(graphic);

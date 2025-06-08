@@ -166,7 +166,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     public void deleteRoom(ActionEvent actionEvent)
     {
         new ConfirmationTextDialogController(
-                Translator.getInstance().t("textblock.deleteroomconfdialog"),
+                Translator.getInstance().t("floor-plan:textblock.deleteroomconfdialog"),
                 result ->
                 {
                     if (!result) return;

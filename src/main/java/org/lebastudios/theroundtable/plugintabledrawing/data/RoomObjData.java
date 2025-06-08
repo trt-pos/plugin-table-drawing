@@ -8,11 +8,11 @@ import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.OrderStati
 public class RoomObjData
 {
     public static final RoomObjData SQUARE_TABLE =
-            new RoomObjData(Translator.getInstance().t("phrase.squaretable"), RoomObjectType.SQUARE, 0, 0, 0);
+            new RoomObjData(Translator.getInstance().t("floor-plan:phrase.squaretable"), RoomObjectType.SQUARE, 0, 0, 0);
     public static final RoomObjData ROUND_TABLE =
-            new RoomObjData(Translator.getInstance().t("phrase.roundtable"), RoomObjectType.ROUND, 0, 0, 0);
+            new RoomObjData(Translator.getInstance().t("floor-plan:phrase.roundtable"), RoomObjectType.ROUND, 0, 0, 0);
     public static final RoomObjData BAR_STOOL =
-            new RoomObjData(Translator.getInstance().t("phrase.barstool"), RoomObjectType.BAR_STOOL, 0, 0, 0);
+            new RoomObjData(Translator.getInstance().t("floor-plan:phrase.barstool"), RoomObjectType.BAR_STOOL, 0, 0, 0);
     public static final RoomObjData BAR_TABLE = 
             new RoomObjData("Bar Table", RoomObjectType.BAR_TABLE, 0, 0, 0);
     public static final RoomObjData ESTABLISHMENT_WALL =

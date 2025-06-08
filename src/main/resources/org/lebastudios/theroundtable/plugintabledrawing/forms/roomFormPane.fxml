@@ -22,13 +22,13 @@
         <RowConstraints />
     </rowConstraints>
     
-    <Label text="%plugintabledrawing.form.room.roomname" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Label text="%floor-plan:plugintabledrawing.form.room.roomname" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
     <TextField fx:id="roomName" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="0"/>
     
-    <Label text="%plugintabledrawing.form.room.width" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Label text="%floor-plan:plugintabledrawing.form.room.width" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
     <TextField fx:id="roomWidth" text="24" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     <Label text="m" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-    <Label text="%plugintabledrawing.form.room.height" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+    <Label text="%floor-plan:plugintabledrawing.form.room.height" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
     <TextField fx:id="roomHeight" text="24" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
     <Label text="m" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
 </GridPane>

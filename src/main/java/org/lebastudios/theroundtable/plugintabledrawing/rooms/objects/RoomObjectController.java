@@ -68,7 +68,7 @@ public class RoomObjectController extends PaneController<RoomObjectController>
         var contextMenu = new ContextMenu();
 
         // Delete Button
-        var menuItem_0 = new MenuItem(Translator.getInstance().t("word.delete"));
+        var menuItem_0 = new MenuItem(Translator.getInstance().t("floor-plan:word.delete"));
         var graphic = new IconView("delete.png");
         graphic.setIconSize(24);
         menuItem_0.setGraphic(graphic);
