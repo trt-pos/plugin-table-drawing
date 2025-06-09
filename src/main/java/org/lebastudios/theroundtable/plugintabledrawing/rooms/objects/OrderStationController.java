@@ -101,7 +101,7 @@ public class OrderStationController extends RoomObjectController
 
         // Rotate Left Button
         var menuItem_0 = new MenuItem(Translator.getInstance().t("floor-plan:phrase.rotateleft"));
-        var graphic = new IconView("floor-plan:rotate-left.png");
+        var graphic = new IconView("core:rotate-left.png");
         graphic.setIconSize(24);
         menuItem_0.setGraphic(graphic);
         menuItem_0.setOnAction(_ ->
@@ -112,7 +112,7 @@ public class OrderStationController extends RoomObjectController
 
         // Rotate Right Button
         var menuItem_1 = new MenuItem(Translator.getInstance().t("floor-plan:phrase.rotateright"));
-        graphic = new IconView("floor-plan:rotate-right.png");
+        graphic = new IconView("core:rotate-right.png");
         graphic.setIconSize(24);
         menuItem_1.setGraphic(graphic);
         menuItem_1.setOnAction(_ ->
@@ -123,7 +123,7 @@ public class OrderStationController extends RoomObjectController
 
         // Rename Button
         var firstMenuItem = new MenuItem(Translator.getInstance().t("floor-plan:word.rename"));
-        graphic = new IconView("floor-plan:rename.png");
+        graphic = new IconView("core:rename.png");
         graphic.setIconSize(24);
         firstMenuItem.setGraphic(graphic);
         firstMenuItem.setOnAction(_ ->
@@ -150,7 +150,7 @@ public class OrderStationController extends RoomObjectController
 
         // Delete Button
         var secondMenuItem = new MenuItem(Translator.getInstance().t("floor-plan:word.delete"));
-        graphic = new IconView("floor-plan:delete.png");
+        graphic = new IconView("core:delete.png");
         graphic.setIconSize(24);
         secondMenuItem.setGraphic(graphic);
         secondMenuItem.setOnAction(_ -> RoomsPaneController.getInstance().activeRoom.deleteRoomObject(this));
@@ -177,9 +177,9 @@ public class OrderStationController extends RoomObjectController
         
         String iconName = switch (this.roomObjectData.roomObjectType)
         {
-            case BAR_STOOL -> "edit-map-bar-stool.png";
-            case ROUND -> "edit-map-round-table.png";
-            case SQUARE -> "edit-map-square-table.png";
+            case BAR_STOOL -> "floor-plan:edit-map-bar-stool.png";
+            case ROUND -> "floor-plan:edit-map-round-table.png";
+            case SQUARE -> "floor-plan:edit-map-square-table.png";
             default -> throw new IllegalStateException("Unexpected value: " + this.roomObjectData.roomObjectType);
         };
         

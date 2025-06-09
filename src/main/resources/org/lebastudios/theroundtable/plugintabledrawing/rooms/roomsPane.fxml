@@ -33,9 +33,9 @@
 
     <VBox HBox.hgrow="ALWAYS" spacing="10">
         <HBox spacing="15" alignment="CENTER_LEFT">
-            <IconButton fx:id="swapModeButton" onAction="#swapMode" iconName="floor-plan:edit.png"/>
-            <IconButton onAction="#newRoom" iconName="floor-plan:new-tab.png"/>
-            <IconButton onAction="#deleteRoom" iconName="floor-plan:delete.png"/>
+            <IconButton fx:id="swapModeButton" onAction="#swapMode" iconName="core:edit.png"/>
+            <IconButton onAction="#newRoom" iconName="core:new-tab.png"/>
+            <IconButton onAction="#deleteRoom" iconName="core:delete.png"/>
         </HBox>
 
         <TabPane HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" fx:id="roomsTabPane" tabClosingPolicy="UNAVAILABLE"/>

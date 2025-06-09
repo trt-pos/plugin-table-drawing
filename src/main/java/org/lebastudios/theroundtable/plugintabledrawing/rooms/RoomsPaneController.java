@@ -183,12 +183,12 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
 
         if (RoomObjectController.editMode)
         {
-            swapModeButton.setIconName("exit.png");
+            swapModeButton.setIconName("core:exit.png");
             instanciateObjPane.setVisible(true);
         }
         else
         {
-            swapModeButton.setIconName("edit.png");
+            swapModeButton.setIconName("core:edit.png");
             instanciateObjPane.setVisible(false);
         }
     }
