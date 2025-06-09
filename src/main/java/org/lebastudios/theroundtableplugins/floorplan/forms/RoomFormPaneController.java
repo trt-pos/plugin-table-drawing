@@ -1,12 +1,12 @@
-package org.lebastudios.theroundtable.plugintabledrawing.forms;
+package org.lebastudios.theroundtableplugins.floorplan.forms;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.lebastudios.theroundtable.apparience.UIEffects;
 import org.lebastudios.theroundtable.controllers.FormPaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.Rooms;
+import org.lebastudios.theroundtableplugins.floorplan.PluginTableCamelotEvents;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.Rooms;
 
 public class RoomFormPaneController extends FormPaneController<RoomData>
 {

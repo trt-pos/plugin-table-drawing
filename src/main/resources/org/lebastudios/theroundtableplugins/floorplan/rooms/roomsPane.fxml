@@ -7,7 +7,7 @@
 <?import org.lebastudios.theroundtable.components.*?>
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
-      fx:controller="org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController"
+      fx:controller="org.lebastudios.theroundtableplugins.floorplan.rooms.RoomsPaneController"
       spacing="10">
 
     <padding>

@@ -1,11 +1,11 @@
-package org.lebastudios.theroundtable.plugintabledrawing;
+package org.lebastudios.theroundtableplugins.floorplan;
 
 import javafx.scene.control.Button;
 import org.lebastudios.theroundtable.MainStageController;
 import org.lebastudios.theroundtable.files.JsonFile;
 import org.lebastudios.theroundtable.fxml2java.CompileFxml;
 import org.lebastudios.theroundtable.plugins.IPlugin;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.RoomsPaneController;
 import org.lebastudios.theroundtable.components.IconButton;
 
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ import java.util.List;
 
 @CompileFxml(
         directories = {
-                "org/lebastudios/theroundtable/plugintabledrawing/forms",
-                "org/lebastudios/theroundtable/plugintabledrawing/rooms",
-                "org/lebastudios/theroundtable/plugintabledrawing/rooms/objects",
+                "org/lebastudios/theroundtableplugins/floorplan/forms",
+                "org/lebastudios/theroundtableplugins/floorplan/rooms",
+                "org/lebastudios/theroundtableplugins/floorplan/rooms/objects",
         }
 )
 public class PluginTableDrawing implements IPlugin

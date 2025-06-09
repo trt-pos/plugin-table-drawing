@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing.rooms.objects;
+package org.lebastudios.theroundtableplugins.floorplan.rooms.objects;
 
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
@@ -13,14 +13,14 @@ import org.lebastudios.theroundtable.apparience.ImageManager;
 import org.lebastudios.theroundtable.dialogs.RequestTextDialogController;
 import org.lebastudios.theroundtable.events.PluginEvents;
 import org.lebastudios.theroundtable.locale.Translator;
-import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
-import org.lebastudios.theroundtable.plugincashregister.cash.Order;
-import org.lebastudios.theroundtable.plugincashregister.cash.OrderItem;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
-import org.lebastudios.theroundtable.plugintabledrawing.data.OrderData;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
+import org.lebastudios.theroundtableplugins.cr.cash.CashRegister;
+import org.lebastudios.theroundtableplugins.cr.cash.Order;
+import org.lebastudios.theroundtableplugins.cr.cash.OrderItem;
+import org.lebastudios.theroundtableplugins.floorplan.PluginTableCamelotEvents;
+import org.lebastudios.theroundtableplugins.floorplan.data.OrderData;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomObjData;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.RoomPaneController;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.RoomsPaneController;
 import org.lebastudios.theroundtable.components.IconView;
 
 public class OrderStationController extends RoomObjectController
@@ -173,7 +173,7 @@ public class OrderStationController extends RoomObjectController
     @Override
     public void loadFXML()
     {
-        this.root = new org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.OrderStation$View(this);
+        this.root = new OrderStation$View(this);
         
         String iconName = switch (this.roomObjectData.roomObjectType)
         {

@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing.rooms;
+package org.lebastudios.theroundtableplugins.floorplan.rooms;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -8,12 +8,12 @@ import javafx.scene.layout.*;
 import lombok.Getter;
 import org.lebastudios.theroundtable.apparience.ImageManager;
 import org.lebastudios.theroundtable.controllers.PaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
-import org.lebastudios.theroundtable.plugintabledrawing.data.OrderModData;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjectController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.OrderStationController;
+import org.lebastudios.theroundtableplugins.floorplan.PluginTableCamelotEvents;
+import org.lebastudios.theroundtableplugins.floorplan.data.OrderModData;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomObjData;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.objects.RoomObjectController;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.objects.OrderStationController;
 
 import java.util.ArrayList;
 import java.util.List;

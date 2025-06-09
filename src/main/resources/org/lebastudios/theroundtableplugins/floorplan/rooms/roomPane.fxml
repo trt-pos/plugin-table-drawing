@@ -2,6 +2,6 @@
 
 
 <?import javafx.scene.layout.Pane?>
-<Pane fx:controller="org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController"
+<Pane fx:controller="org.lebastudios.theroundtableplugins.floorplan.rooms.RoomPaneController"
       xmlns="http://javafx.com/javafx/17.0.12"
       xmlns:fx="http://javafx.com/fxml/1" />

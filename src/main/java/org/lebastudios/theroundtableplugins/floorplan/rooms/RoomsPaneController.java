@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing.rooms;
+package org.lebastudios.theroundtableplugins.floorplan.rooms;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -11,12 +11,12 @@ import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.dialogs.ConfirmationTextDialogController;
 import org.lebastudios.theroundtable.dialogs.FormDialogController;
 import org.lebastudios.theroundtable.locale.Translator;
-import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableCamelotEvents;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
-import org.lebastudios.theroundtable.plugintabledrawing.forms.RoomFormPaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObjectController;
+import org.lebastudios.theroundtableplugins.cr.cash.CashRegister;
+import org.lebastudios.theroundtableplugins.floorplan.PluginTableCamelotEvents;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomObjData;
+import org.lebastudios.theroundtableplugins.floorplan.forms.RoomFormPaneController;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.objects.RoomObjectController;
 import org.lebastudios.theroundtable.components.IconButton;
 
 import java.io.File;

@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing.data;
+package org.lebastudios.theroundtableplugins.floorplan.data;
 
 public enum RoomObjectType
 {

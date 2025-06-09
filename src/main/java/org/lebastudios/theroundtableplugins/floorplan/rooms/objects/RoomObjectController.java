@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing.rooms.objects;
+package org.lebastudios.theroundtableplugins.floorplan.rooms.objects;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;
@@ -6,10 +6,10 @@ import javafx.scene.control.MenuItem;
 import lombok.Getter;
 import org.lebastudios.theroundtable.controllers.PaneController;
 import org.lebastudios.theroundtable.locale.Translator;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjData;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomObjectType;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomPaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomObjData;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomObjectType;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.RoomPaneController;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.RoomsPaneController;
 import org.lebastudios.theroundtable.components.IconButton;
 import org.lebastudios.theroundtable.components.IconView;
 
@@ -157,7 +157,7 @@ public class RoomObjectController extends PaneController<RoomObjectController>
     @Override
     public void loadFXML()
     {
-        this.root = new org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.RoomObject$View(this);
+        this.root = new RoomObject$View(this);
         
         String iconName = switch (this.roomObjectData.roomObjectType)
         {

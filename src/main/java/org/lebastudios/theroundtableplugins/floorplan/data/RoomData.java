@@ -1,4 +1,4 @@
-package org.lebastudios.theroundtable.plugintabledrawing.data;
+package org.lebastudios.theroundtableplugins.floorplan.data;
 
 import lombok.NoArgsConstructor;
 import org.lebastudios.theroundtable.camelot.FromBytes;
@@ -6,7 +6,7 @@ import org.lebastudios.theroundtable.camelot.FromJsonBytesToObject;
 import org.lebastudios.theroundtable.camelot.FromObjectToJsonBytes;
 import org.lebastudios.theroundtable.camelot.IntoBytes;
 import org.lebastudios.theroundtable.files.JsonFile;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.Rooms;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.Rooms;
 
 import java.io.File;
 import java.text.ParseException;

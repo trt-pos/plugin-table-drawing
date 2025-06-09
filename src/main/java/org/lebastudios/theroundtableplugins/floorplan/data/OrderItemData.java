@@ -1,6 +1,6 @@
-package org.lebastudios.theroundtable.plugintabledrawing.data;
+package org.lebastudios.theroundtableplugins.floorplan.data;
 
-import org.lebastudios.theroundtable.plugincashregister.cash.OrderItem;
+import org.lebastudios.theroundtableplugins.cr.cash.OrderItem;
 
 import java.math.BigDecimal;
 

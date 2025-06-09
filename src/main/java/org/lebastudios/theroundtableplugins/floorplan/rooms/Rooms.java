@@ -1,9 +1,9 @@
-package org.lebastudios.theroundtable.plugintabledrawing.rooms;
+package org.lebastudios.theroundtableplugins.floorplan.rooms;
 
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
-import org.lebastudios.theroundtable.plugintabledrawing.PluginTableDrawing;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
+import org.lebastudios.theroundtableplugins.floorplan.PluginTableDrawing;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
 
 import java.io.File;
 import java.io.FileReader;

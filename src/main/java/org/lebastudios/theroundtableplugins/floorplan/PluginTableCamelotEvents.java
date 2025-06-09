@@ -1,12 +1,12 @@
-package org.lebastudios.theroundtable.plugintabledrawing;
+package org.lebastudios.theroundtableplugins.floorplan;
 
 import org.lebastudios.theroundtable.events.CamelotEvent;
-import org.lebastudios.theroundtable.plugincashregister.cash.CashRegister;
-import org.lebastudios.theroundtable.plugintabledrawing.data.OrderData;
-import org.lebastudios.theroundtable.plugintabledrawing.data.OrderModData;
-import org.lebastudios.theroundtable.plugintabledrawing.data.RoomData;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.RoomsPaneController;
-import org.lebastudios.theroundtable.plugintabledrawing.rooms.objects.OrderStationController;
+import org.lebastudios.theroundtableplugins.cr.cash.CashRegister;
+import org.lebastudios.theroundtableplugins.floorplan.data.OrderData;
+import org.lebastudios.theroundtableplugins.floorplan.data.OrderModData;
+import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.RoomsPaneController;
+import org.lebastudios.theroundtableplugins.floorplan.rooms.objects.OrderStationController;
 
 public class PluginTableCamelotEvents
 {
