@@ -69,7 +69,7 @@ public class RoomObjectController extends PaneController<RoomObjectController>
 
         // Delete Button
         var menuItem_0 = new MenuItem(Translator.getInstance().t("floor-plan:word.delete"));
-        var graphic = new IconView("floor-plan:delete.png");
+        var graphic = new IconView("core:delete.png");
         graphic.setIconSize(24);
         menuItem_0.setGraphic(graphic);
         menuItem_0.setOnAction(_ -> RoomsPaneController.getInstance().activeRoom.deleteRoomObject(this));
@@ -157,12 +157,12 @@ public class RoomObjectController extends PaneController<RoomObjectController>
     @Override
     public void loadFXML()
     {
-        this.root = new RoomObject$View(this);
+        this.root = new org.lebastudios.theroundtableplugins.floorplan.rooms.objects.RoomObject$View(this);
         
         String iconName = switch (this.roomObjectData.roomObjectType)
         {
-            case ESTABLISHMENT_WALL -> "edit-map-establishment-wall.png";
-            case BAR_TABLE -> "edit-map-bar-table.png";
+            case ESTABLISHMENT_WALL -> "floor-plan:edit-map-establishment-wall.png";
+            case BAR_TABLE -> "floor-plan:edit-map-bar-table.png";
             default -> throw new IllegalStateException("Unexpected value: " + this.roomObjectData.roomObjectType);
         };
 
