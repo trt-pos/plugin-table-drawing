@@ -1,21 +1,21 @@
 {
-  "pluginName": "Floor Planning",
-  "pluginId": "floor-plan",
-  "pluginDescription": "Visually design and manage your establishment’s table layout, including round tables, bar stools, and more.",
-  "pluginVersion": "3.0.0",
-  "pluginVendor": "Leba Studios - Software Solutions",
-  "pluginVendorUrl": "https://lebastudios.org",
+  "name": "Floor Planning",
+  "id": "floor-plan",
+  "description": "Visually design and manage your establishment’s table layout, including round tables, bar stools, and more.",
+  "version": "3.0.0",
+  "vendor": "Leba Studios - Software Solutions",
+  "vendor-url": "https://lebastudios.org",
   "categories": [
     "hospitality"
   ],
-  "pluginDependencies": [
+  "dependencies": [
     {
-      "pluginId": "core",
-      "pluginVersion": "3.0.0"
+      "id": "core",
+      "version": "3.0.0"
     },
     {
-      "pluginId": "cr",
-      "pluginVersion": "3.0.0"
+      "id": "cr",
+      "version": "3.0.0"
     }
   ]
 }
