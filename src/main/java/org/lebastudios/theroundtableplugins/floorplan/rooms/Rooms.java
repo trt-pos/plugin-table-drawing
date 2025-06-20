@@ -2,7 +2,7 @@ package org.lebastudios.theroundtableplugins.floorplan.rooms;
 
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
-import org.lebastudios.theroundtableplugins.floorplan.PluginTableDrawing;
+import org.lebastudios.theroundtableplugins.floorplan.PluginFloorPlanning;
 import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
 
 import java.io.File;
@@ -12,7 +12,7 @@ public class Rooms
 {
     public static File getRoomsFile()
     {
-        return new File(PluginTableDrawing.getInstance().getPluginFolder(), "rooms");
+        return new File(PluginFloorPlanning.getInstance().getPluginFolder(), "rooms");
     }
     
     public static boolean existsRoom(String roomName)

@@ -12,7 +12,7 @@ import org.lebastudios.theroundtable.dialogs.ConfirmationTextDialogController;
 import org.lebastudios.theroundtable.dialogs.FormDialogController;
 import org.lebastudios.theroundtable.locale.Translator;
 import org.lebastudios.theroundtableplugins.cr.cash.CashRegister;
-import org.lebastudios.theroundtableplugins.floorplan.PluginTableCamelotEvents;
+import org.lebastudios.theroundtableplugins.floorplan.FloorPlanningCamelotEvents;
 import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
 import org.lebastudios.theroundtableplugins.floorplan.data.RoomObjData;
 import org.lebastudios.theroundtableplugins.floorplan.forms.RoomFormPaneController;
@@ -48,7 +48,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     {
         CashRegister.onOrderItemModified.addListener(_ ->
         {
-            PluginTableCamelotEvents.getInstance().invokeOnOrderModEvent();
+            FloorPlanningCamelotEvents.getInstance().invokeOnOrderModEvent();
         });
     }
 
@@ -58,8 +58,8 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
     {
         loadRooms();
 
-        PluginTableCamelotEvents.getInstance().onRoomDeleted.addWeakListener(onRoomDeleted);
-        PluginTableCamelotEvents.getInstance().onRoomCreated.addWeakListener(onRoomCreated);
+        FloorPlanningCamelotEvents.getInstance().onRoomDeleted.addWeakListener(onRoomDeleted);
+        FloorPlanningCamelotEvents.getInstance().onRoomCreated.addWeakListener(onRoomCreated);
 
         roomsTabPane.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) ->
         {
@@ -171,7 +171,7 @@ public class RoomsPaneController extends PaneController<RoomsPaneController>
                 {
                     if (!result) return;
 
-                    PluginTableCamelotEvents.getInstance().onRoomDeleted.invoke(activeRoom.getRoomData());
+                    FloorPlanningCamelotEvents.getInstance().onRoomDeleted.invoke(activeRoom.getRoomData());
                 }
         ).setOwner(this.getStage()).instantiate();
     }

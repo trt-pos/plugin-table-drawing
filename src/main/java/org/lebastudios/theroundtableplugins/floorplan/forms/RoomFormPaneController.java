@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.lebastudios.theroundtable.apparience.UIEffects;
 import org.lebastudios.theroundtable.controllers.FormPaneController;
-import org.lebastudios.theroundtableplugins.floorplan.PluginTableCamelotEvents;
+import org.lebastudios.theroundtableplugins.floorplan.FloorPlanningCamelotEvents;
 import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
 import org.lebastudios.theroundtableplugins.floorplan.rooms.Rooms;
 
@@ -87,7 +87,7 @@ public class RoomFormPaneController extends FormPaneController<RoomData>
     @Override
     public boolean onSaveAction(RoomData object)
     {
-        PluginTableCamelotEvents.getInstance().onRoomCreated.invoke(object);
+        FloorPlanningCamelotEvents.getInstance().onRoomCreated.invoke(object);
         return true;
     }
 }

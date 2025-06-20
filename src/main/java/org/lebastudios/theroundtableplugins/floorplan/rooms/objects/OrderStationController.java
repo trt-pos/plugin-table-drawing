@@ -16,7 +16,7 @@ import org.lebastudios.theroundtable.locale.Translator;
 import org.lebastudios.theroundtableplugins.cr.cash.CashRegister;
 import org.lebastudios.theroundtableplugins.cr.cash.Order;
 import org.lebastudios.theroundtableplugins.cr.cash.OrderItem;
-import org.lebastudios.theroundtableplugins.floorplan.PluginTableCamelotEvents;
+import org.lebastudios.theroundtableplugins.floorplan.FloorPlanningCamelotEvents;
 import org.lebastudios.theroundtableplugins.floorplan.data.OrderData;
 import org.lebastudios.theroundtableplugins.floorplan.data.RoomObjData;
 import org.lebastudios.theroundtableplugins.floorplan.rooms.RoomPaneController;
@@ -66,7 +66,7 @@ public class OrderStationController extends RoomObjectController
 
         this.order.getObservableOrderItems().addListener((ListChangeListener<OrderItem>) _ ->
         {
-            PluginTableCamelotEvents.getInstance().invokeOnOrderModEvent();
+            FloorPlanningCamelotEvents.getInstance().invokeOnOrderModEvent();
         });
 
         CashRegister cashRegister = CashRegister.getInstance();

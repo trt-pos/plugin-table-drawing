@@ -1,6 +1,6 @@
 package org.lebastudios.theroundtableplugins.floorplan;
 
-import org.lebastudios.theroundtable.events.CamelotEvent;
+import org.lebastudios.theroundtable.camelot.CamelotEvent;
 import org.lebastudios.theroundtableplugins.cr.cash.CashRegister;
 import org.lebastudios.theroundtableplugins.floorplan.data.OrderData;
 import org.lebastudios.theroundtableplugins.floorplan.data.OrderModData;
@@ -8,36 +8,40 @@ import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
 import org.lebastudios.theroundtableplugins.floorplan.rooms.RoomsPaneController;
 import org.lebastudios.theroundtableplugins.floorplan.rooms.objects.OrderStationController;
 
-public class PluginTableCamelotEvents
+public class FloorPlanningCamelotEvents
 {
-    private static PluginTableCamelotEvents instance;
+    private static FloorPlanningCamelotEvents instance;
     
-    public static PluginTableCamelotEvents getInstance()
+    public static FloorPlanningCamelotEvents getInstance()
     {
-        if (instance == null) instance = new PluginTableCamelotEvents();
+        if (instance == null) instance = new FloorPlanningCamelotEvents();
         
         return instance;
     }
     
-    private PluginTableCamelotEvents() {}
+    private FloorPlanningCamelotEvents() {}
     
     public final CamelotEvent<RoomData> onRoomChanged = new CamelotEvent<>(
-            "plugin-table-drawing:room-changed", 
+            PluginFloorPlanning.class,
+            "room-changed", 
             new RoomData()
     );
 
     public final CamelotEvent<RoomData> onRoomCreated = new CamelotEvent<>(
-            "plugin-table-drawing:room-created",
+            PluginFloorPlanning.class,
+            "room-created",
             new RoomData()
     );
     
     public final CamelotEvent<RoomData> onRoomDeleted = new CamelotEvent<>(
-            "plugin-table-drawing:room-deleted",
+            PluginFloorPlanning.class,
+            "room-deleted",
             new RoomData()
     );
     
     public final CamelotEvent<OrderModData> onOrderMod = new CamelotEvent<>(
-            "plugin-table-drawing:order-mod",
+            PluginFloorPlanning.class,
+            "order-mod",
             new OrderModData()
     );
     
@@ -57,6 +61,6 @@ public class PluginTableCamelotEvents
                 order
         );
 
-        PluginTableCamelotEvents.getInstance().onOrderMod.invoke(modData);
+        FloorPlanningCamelotEvents.getInstance().onOrderMod.invoke(modData);
     }
 }

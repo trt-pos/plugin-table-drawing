@@ -8,7 +8,7 @@ import javafx.scene.layout.*;
 import lombok.Getter;
 import org.lebastudios.theroundtable.apparience.ImageManager;
 import org.lebastudios.theroundtable.controllers.PaneController;
-import org.lebastudios.theroundtableplugins.floorplan.PluginTableCamelotEvents;
+import org.lebastudios.theroundtableplugins.floorplan.FloorPlanningCamelotEvents;
 import org.lebastudios.theroundtableplugins.floorplan.data.OrderModData;
 import org.lebastudios.theroundtableplugins.floorplan.data.RoomData;
 import org.lebastudios.theroundtableplugins.floorplan.data.RoomObjData;
@@ -62,8 +62,8 @@ public class RoomPaneController extends PaneController<RoomPaneController>
     
     public RoomPaneController(RoomData roomData, TabPane parent)
     {
-        PluginTableCamelotEvents.getInstance().onRoomChanged.addWeakListener(onRoomChanged);
-        PluginTableCamelotEvents.getInstance().onOrderMod.addWeakListener(onOrderMod);
+        FloorPlanningCamelotEvents.getInstance().onRoomChanged.addWeakListener(onRoomChanged);
+        FloorPlanningCamelotEvents.getInstance().onOrderMod.addWeakListener(onOrderMod);
         
         roomData.updateRoomObjIds();
         
@@ -139,7 +139,7 @@ public class RoomPaneController extends PaneController<RoomPaneController>
     {
         updateRoomData();
 
-        PluginTableCamelotEvents.getInstance().onRoomChanged.invoke(roomData);
+        FloorPlanningCamelotEvents.getInstance().onRoomChanged.invoke(roomData);
     }
 
     private void updateRoomData()

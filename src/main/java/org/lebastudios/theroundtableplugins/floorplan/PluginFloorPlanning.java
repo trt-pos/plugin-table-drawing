@@ -18,11 +18,11 @@ import java.util.List;
                 "org/lebastudios/theroundtableplugins/floorplan/rooms/objects",
         }
 )
-public class PluginTableDrawing implements IPlugin
+public class PluginFloorPlanning implements IPlugin
 {
-    private static PluginTableDrawing instance;
+    private static PluginFloorPlanning instance;
     
-    public static PluginTableDrawing getInstance()
+    public static PluginFloorPlanning getInstance()
     {
         if (instance == null) throw new IllegalStateException("This plugin has to be instantiated");
 
@@ -34,7 +34,7 @@ public class PluginTableDrawing implements IPlugin
     {
         instance = this;
         
-        PluginTableCamelotEvents.getInstance().onRoomChanged.addListener(JsonFile::save);
+        FloorPlanningCamelotEvents.getInstance().onRoomChanged.addListener(JsonFile::save);
     }
 
     @Override
