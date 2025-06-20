@@ -11,8 +11,8 @@ import lombok.Getter;
 import org.controlsfx.control.decoration.GraphicDecoration;
 import org.lebastudios.theroundtable.apparience.ImageManager;
 import org.lebastudios.theroundtable.dialogs.RequestTextDialogController;
-import org.lebastudios.theroundtable.events.PluginEvents;
 import org.lebastudios.theroundtable.locale.Translator;
+import org.lebastudios.theroundtableplugins.cr.PluginCashRegisterEvents;
 import org.lebastudios.theroundtableplugins.cr.cash.CashRegister;
 import org.lebastudios.theroundtableplugins.cr.cash.Order;
 import org.lebastudios.theroundtableplugins.cr.cash.OrderItem;
@@ -91,7 +91,7 @@ public class OrderStationController extends RoomObjectController
     protected void onClick()
     {
         lastCLickedTable = this;
-        PluginEvents.invokePluginEvent("plugin-cash-register:showOrder", order);
+        PluginCashRegisterEvents.showOrder.invoke(order);
     }
 
     @Override
@@ -173,7 +173,7 @@ public class OrderStationController extends RoomObjectController
     @Override
     public void loadFXML()
     {
-        this.root = new OrderStation$View(this);
+        this.root = new org.lebastudios.theroundtableplugins.floorplan.rooms.objects.OrderStation$View(this);
         
         String iconName = switch (this.roomObjectData.roomObjectType)
         {
