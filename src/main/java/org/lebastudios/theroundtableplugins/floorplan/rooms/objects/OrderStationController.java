@@ -173,7 +173,7 @@ public class OrderStationController extends RoomObjectController
     @Override
     public void loadFXML()
     {
-        this.root = new org.lebastudios.theroundtableplugins.floorplan.rooms.objects.OrderStation$View(this);
+        this.root = new OrderStation$View(this);
         
         String iconName = switch (this.roomObjectData.roomObjectType)
         {

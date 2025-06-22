@@ -157,7 +157,7 @@ public class RoomObjectController extends PaneController<RoomObjectController>
     @Override
     public void loadFXML()
     {
-        this.root = new org.lebastudios.theroundtableplugins.floorplan.rooms.objects.RoomObject$View(this);
+        this.root = new RoomObject$View(this);
         
         String iconName = switch (this.roomObjectData.roomObjectType)
         {
