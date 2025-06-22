@@ -107,8 +107,8 @@ public class RoomPaneController extends PaneController<RoomPaneController>
         var table = roomObjData.intoController(this);
         
         tablesPane.getChildren().add(table.getRoot());
-        table.getController().setPosition(0, 0);
-        roomObjects.add(table.getController());
+        table.setPosition(0, 0);
+        roomObjects.add(table);
         
         onRoomDataUpdated();
     }
@@ -131,7 +131,7 @@ public class RoomPaneController extends PaneController<RoomPaneController>
             var newTable = roomObjectData.intoController(this);
 
             tablesPane.getChildren().add(newTable.getRoot());
-            roomObjects.add(newTable.getController());
+            roomObjects.add(newTable);
         }
     }
     
