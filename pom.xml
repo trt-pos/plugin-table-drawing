@@ -53,6 +53,10 @@
         
     </dependencies>
 
+    <prerequisites>
+        <maven>3.9.10</maven>
+    </prerequisites>
+    
     <build>
         <plugins>
             <plugin>
