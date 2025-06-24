@@ -30,4 +30,13 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.lebastudios.theroundtable</groupId>
+                <artifactId>t-cleaner</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
